@@ -12,7 +12,7 @@ Ensure that you have Neovim installed on your system.
 ## Step 2: Clone this repository
 Clone this repository to the appropriate configuration directory for Neovim:  
 - On Windows:  
-    ```bash
+    ```powershell
     git clone https://github.com/nhktmdzhg/nvim.git %APPDATA%\Local\nvim
     ```
 - On Linux:  
@@ -36,33 +36,49 @@ Ensure that you have `node.js` and `python` installed on your system. These are 
 ### Install Node.js and Python Providers for Neovim
 After installing node.js and python, you need to install the providers:  
 - For `node.js`:  
-    ```bash
+    + On Windows:  
+    ```powershell
     npm install -g neovim
+    ```
+    + On Linux: 
+    ```bash
+    sudo npm install -g neovim
     ```
 - For `python`:  
     + On Windows:  
-    ```bash
+    ```powershell
     pip install pynvim
     ```
     + On Linux: You can typically install the `pynvim` package using your package manager. For example, on Debian-based systems:  
     ```bash
     sudo apt-get install python3-pynvim
     ```
+  ### Install vim-plug (package manager for vim)
+- On Windows:
+    ```powershell
+    iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+    ```
+- On Linux:
+    ```bash
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    ```
 ## Step 4: Start Neovim and Install Plugins
 Start Neovim by running the following command:  
-```bash
-nvim
-```
+    ```bash
+    nvim
+    ```
 Then run the following command to install the plugins:  
-```vim
-:PlugInstall
-```
+    ```vim
+    :PlugInstall
+    ```
 ## Step 5: Install Language Extensions for CoC
 To enable autocompletion and other language features, you need to install the language extensions for CoC.
 For example, to install an extension for C/C++ (you need to have `clangd` installed on your system):  
-```vim
-:CocInstall coc-clangd
-```
+    ```vim
+    :CocInstall coc-clangd
+    ```
 You can find list of available extensions on the [CoC Extensions Wiki](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
 # Usage
 After completing the above steps, your Neovim setup should be ready to use. You can customize further according to your needs.  
