@@ -42,7 +42,7 @@ After installing node.js and python, you need to install the providers:
 - For `python`:  
     + On Windows:  
     ```bash
-    pip install neovim
+    pip install pynvim
     ```
     + On Linux: You can typically install the `pynvim` package using your package manager. For example, on Debian-based systems:  
     ```bash
