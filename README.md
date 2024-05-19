@@ -66,19 +66,19 @@ After installing node.js and python, you need to install the providers:
     ```
 ## Step 4: Start Neovim and Install Plugins
 Start Neovim by running the following command:  
-    ```bash
-    nvim
-    ```
+```bash
+nvim
+```
 Then run the following command to install the plugins:  
-    ```vim
-    :PlugInstall
-    ```
+```vim
+:PlugInstall
+```
 ## Step 5: Install Language Extensions for CoC
 To enable autocompletion and other language features, you need to install the language extensions for CoC.
 For example, to install an extension for C/C++ (you need to have `clangd` installed on your system):  
-    ```vim
-    :CocInstall coc-clangd
-    ```
+```vim
+:CocInstall coc-clangd
+```
 You can find list of available extensions on the [CoC Extensions Wiki](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
 # Usage
 After completing the above steps, your Neovim setup should be ready to use. You can customize further according to your needs.  
