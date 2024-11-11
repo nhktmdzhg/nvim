@@ -9,6 +9,10 @@ Ensure that you have Neovim installed on your system.
     ```bash
     sudo apt-get install neovim neovim-qt
     ```
+    Or in Arch-based (btw) systems:  
+    ```bash
+    sudo pacman -S neovim neovim-qt
+    ```
 ## Step 2: Clone this repository
 Clone this repository to the appropriate configuration directory for Neovim:  
 - On Windows:  
@@ -27,11 +31,19 @@ Ensure that you have `node.js` and `python` installed on your system. These are 
     ```bash
     sudo apt-get install nodejs npm
     ```
+    Or in Arch-based (btw) systems:  
+    ```bash
+    sudo pacman -S nodejs npm
+    ```
 ### Python
 - On Windows: Download and install the latest release from the [official website](https://www.python.org/)
 - On Linux: You can typically install Python using your package manager. For example, on Debian-based systems:  
     ```bash
     sudo apt-get install python3
+    ```
+    Or in Arch-based (btw) systems:  
+    ```bash
+    sudo pacman -S python
     ```
 ### Install Node.js and Python Providers for Neovim
 After installing node.js and python, you need to install the providers:  
@@ -52,6 +64,10 @@ After installing node.js and python, you need to install the providers:
     + On Linux: You can typically install the `pynvim` package using your package manager. For example, on Debian-based systems:  
     ```bash
     sudo apt-get install python3-pynvim
+    ```
+    Or in Arch-based (btw) systems:  
+    ```bash
+    sudo pacman -S python-pynvim
     ```
   ### Install vim-plug (package manager for vim)
 - On Windows:

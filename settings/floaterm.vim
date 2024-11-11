@@ -15,9 +15,9 @@ autocmd User FloatermOpen        " triggered after opening a new/existed floater
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Hotkey to manage terminals
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Open a new terminal 
-nnoremap <silent> <F9>    :FloatermNew<CR>
-tnoremap <silent> <F9>    <C-\><C-n>:FloatermNew<CR>
+" Open a new terminal
+nnoremap <silent> <F9> :FloatermNew zsh<CR>
+tnoremap <silent> <F9> <C-\><C-n>:FloatermNew zsh<CR>
 
 " Toggle terminal
 nnoremap <silent> <F10> :FloatermToggle<CR>
