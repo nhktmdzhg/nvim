@@ -31,13 +31,6 @@ autocmd FileChangedShellPost *
     \ | echo "File changed on disk. Buffer reloaded."
     \ | echohl None
 
-
-nmap <M-Right> :vertical resize +1<CR>    
-nmap <M-Left> :vertical resize -1<CR>
-nmap <M-Down> :resize +1<CR>
-nmap <M-Up> :resize -1<CR>
-
-
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nmap /\ :noh<CR>
 
@@ -160,10 +153,11 @@ if has("unix") && system("uname") =~? "Linux"
   autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
   autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
 endif
+
 autocmd VimEnter * startinsert
+
 if exists("g:neovide")
   let g:neovide_remember_window_size = v:true
-  set guifont=JetBrains\ Mono,Nom\ Na\ Tong:h12:h12
   let g:neovide_cursor_vfx_mode = "pixiedust"
 endif
 
