@@ -9,11 +9,9 @@ set foldnestmax=1
 set foldlevelstart=3
 set number
 set ignorecase
-
 set nobackup
 set nowb
 set noswapfile
-
 set synmaxcol=3000
 set lazyredraw
 au! BufNewFile,BufRead *.json set foldmethod=indent
@@ -45,7 +43,7 @@ nmap /\ :noh<CR>
 
 call plug#begin(stdpath('config').'/plugged')
 " Theme
-  Plug 'folke/tokyonight.nvim',
+  Plug 'kvrohit/substrata.nvim'
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 " File browser
@@ -102,6 +100,9 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Fold 
   Plug 'tmhedberg/SimpylFold'
+
+" Github Copilot
+  Plug 'github/copilot.vim'
 call plug#end()
 
 call wilder#setup({
@@ -114,7 +115,8 @@ call wilder#setup({
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'pumblend': 20, 
       \ }))
-colorscheme tokyonight-moon
+
+colorscheme substrata
 
 set termguicolors
 autocmd VimEnter * call s:setup_lualine()
@@ -139,14 +141,24 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " Close buffer without exitting vim 
 nnoremap <silent> <leader>bd :bp \| sp \| bn \| bd<CR>
 nnoremap <silent> <C-a> gg<S-v>G
-nmap <silent> <C-Tab> :BufferLineCycleNext<CR>
-nmap <silent> <C-S-w> :bdelete<CR>
+map <silent> <C-Tab> :BufferLineCycleNext<CR>
+map <silent> <C-S-w> :bdelete<CR>
+nmap <silent> <C-S> :write<CR>
+imap <silent> <C-S> <Esc>:write<CR>a
+imap <silent> <S-Del> <Esc>:delete<CR>a
+nmap <silent> <S-Del> :delete<CR>
 
 " Other setting
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
   execute 'source' setting_file
 endfor
-let fcitx5state=system("fcitx5-remote")
-autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
-autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+
+if has("unix") && system("uname") =~? "Linux"
+  let fcitx5state = system("fcitx5-remote")
+  autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
+  autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+endif
 autocmd VimEnter * startinsert
+

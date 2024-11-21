@@ -103,7 +103,7 @@ The following are some useful resources for learning more about Neovim and the p
 - [Neovim Documentation](https://neovim.io/doc/user/)
 - [vim-plug Github](https://github.com/junegunn/vim-plug)
 - [CoC.nvim GitHub](https://github.com/neoclide/coc.nvim)
-- [tokyonight.nvim GitHub](https://github.com/folke/tokyonight.nvim)
+- [substrata.nvim GitHub](https://github.com/kvrohit/substrata.nvim)
 - [bufferline.nvim GitHub](https://github.com/akinsho/bufferline.nvim)
 - [NERDTree GitHub](https://github.com/preservim/nerdtree)
 - [nerdtree-git-plugin GitHub](https://github.com/Xuyuanp/nerdtree-git-plugin)
@@ -128,5 +128,6 @@ The following are some useful resources for learning more about Neovim and the p
 - [vim-rhubarb GitHub](https://github.com/tpope/vim-rhubarb)
 - [vim-gitgutter GitHub](https://github.com/airblade/vim-gitgutter)
 - [vim-mergetool GitHub](https://github.com/samoshkin/vim-mergetool)
-- [SimpylFold GitHub](https://github.com/tmhedberg/SimpylFold)  
+- [SimpylFold GitHub](https://github.com/tmhedberg/SimpylFold)
+- [Github Copilot](https://github.com/github/copilot.vim)  
 Happy coding!
