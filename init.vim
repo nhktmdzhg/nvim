@@ -161,4 +161,9 @@ if has("unix") && system("uname") =~? "Linux"
   autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
 endif
 autocmd VimEnter * startinsert
+if exists("g:neovide")
+  let g:neovide_remember_window_size = v:true
+  set guifont=JetBrains\ Mono,Nom\ Na\ Tong:h12:h12
+  let g:neovide_cursor_vfx_mode = "pixiedust"
+endif
 
