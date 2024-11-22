@@ -110,6 +110,7 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ }))
 
 colorscheme substrata
+let g:airline_theme='base16'
 
 set termguicolors
 autocmd VimEnter * call s:setup_lualine()
