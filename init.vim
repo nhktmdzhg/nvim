@@ -149,10 +149,28 @@ endfor
 
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
+function! IBusOff()
+	let g:ibus_prev_engine = system('ibus engine')
+	silent! execute '!ibus engine BambooUs::Candy'
+endfunction
+
+function! IBusOn()
+	let l:current_engine = system('ibus engine')
+	if l:current_engine !~? 'BambooUs::Candy'
+		let g:ibus_prev_engine = l:current_engine
+	endif
+	silent! execute '!ibus engine ' . g:ibus_prev_engine
+endfunction
+
+
+" if has("unix") && system("uname") =~? "Linux"
+"   let fcitx5state = system("fcitx5-remote")
+"   autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
+"   autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+" endif
 if has("unix") && system("uname") =~? "Linux"
-  let fcitx5state = system("fcitx5-remote")
-  autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
-  autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+  autocmd InsertLeave * :call IBusOff()
+  autocmd InsertEnter * :call IBusOn()
 endif
 
 autocmd VimEnter * startinsert
