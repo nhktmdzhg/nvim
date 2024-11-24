@@ -17,7 +17,7 @@ Ensure that you have Neovim installed on your system.
 Clone this repository to the appropriate configuration directory for Neovim:  
 - On Windows:  
     ```powershell
-    git clone https://github.com/nhktmdzhg/nvim.git %APPDATA%\Local\nvim
+    git clone https://github.com/nhktmdzhg/nvim.git .\AppData\Local\nvim
     ```
 - On Linux:  
     ```bash
