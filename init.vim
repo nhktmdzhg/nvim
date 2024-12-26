@@ -36,7 +36,7 @@ nmap /\ :noh<CR>
 
 call plug#begin(stdpath('config').'/plugged')
 " Theme
-  Plug 'kvrohit/substrata.nvim'
+  Plug 'folke/tokyonight.nvim'
   Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 " File browser
@@ -78,9 +78,9 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Code syntax highlight
   Plug 'jackguo380/vim-lsp-cxx-highlight'       " C/C++
-  Plug 'uiiaoo/java-syntax.vim'                 " Java
-  Plug 'sheerun/vim-polyglot'
-  Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+  Plug 'sheerun/vim-polyglot'                   " Other language
+  Plug 'yuezk/vim-js'                           " Javascript
+  Plug 'MaxMEllon/vim-jsx-pretty'               " JSX
   
 " Debugging
   Plug 'puremourning/vimspector'                " Vimspector
@@ -109,7 +109,8 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'pumblend': 20, 
       \ }))
 
-colorscheme substrata
+" Set theme
+colorscheme tokyonight-moon
 let g:airline_theme='base16'
 
 set termguicolors
@@ -148,31 +149,11 @@ for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
 endfor
 
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-
-function! IBusOff()
-	let g:ibus_prev_engine = system('ibus engine')
-	silent! execute '!ibus engine BambooUs::Candy'
-endfunction
-
-function! IBusOn()
-	let l:current_engine = system('ibus engine')
-	if l:current_engine !~? 'BambooUs::Candy'
-		let g:ibus_prev_engine = l:current_engine
-	endif
-	silent! execute '!ibus engine ' . g:ibus_prev_engine
-endfunction
-
-
-" if has("unix") && system("uname") =~? "Linux"
-"   let fcitx5state = system("fcitx5-remote")
-"   autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
-"   autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
-" endif
 if has("unix") && system("uname") =~? "Linux"
-  autocmd InsertLeave * :call IBusOff()
-  autocmd InsertEnter * :call IBusOn()
+  let fcitx5state = system("fcitx5-remote")
+  autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
+  autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
 endif
-
 autocmd VimEnter * startinsert
 
 if exists("g:neovide")
