@@ -136,6 +136,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " Close buffer without exitting vim 
 nnoremap <silent> <leader>bd :bp \| sp \| bn \| bd<CR>
 nnoremap <silent> <C-a> gg<S-v>G
+inoremap <silent> <C-a> <Esc>gg<S-v>G
 map <silent> <C-Tab> :BufferLineCycleNext<CR>
 map <silent> <C-S-w> :bdelete<CR>
 nmap <silent> <C-S> :write<CR>
