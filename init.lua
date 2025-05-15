@@ -176,7 +176,7 @@ end, { expr = true, noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    vim.cmd("startinsert")
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "i", false)
   end,
 })
 

@@ -22,16 +22,14 @@ vim.g.fzf_preview_window = { "right:50%", "ctrl-/" }
 vim.g.fzf_commits_log_options = "--graph --color=always --format=\"%C(auto)%h%d %s %C(black)%C(bold)%cr\""
 
 -- Highlight definitions
-vim.cmd([[
-  hi! fzf_fg      ctermfg=14
-  hi! fzf_fgp     ctermfg=3
-  hi! fzf_hl      ctermfg=5
-  hi! fzf_hlp     ctermfg=5
-  hi! fzf_info    ctermfg=6
-  hi! fzf_prompt  ctermfg=6
-  hi! fzf_spinner ctermfg=6
-  hi! fzf_pointer ctermfg=3
-]])
+vim.api.nvim_set_hl(0, "fzf_fg", { ctermfg = 14 })
+vim.api.nvim_set_hl(0, "fzf_fgp", { ctermfg = 3 })
+vim.api.nvim_set_hl(0, "fzf_hl", { ctermfg = 5 })
+vim.api.nvim_set_hl(0, "fzf_hlp", { ctermfg = 5 })
+vim.api.nvim_set_hl(0, "fzf_info", { ctermfg = 6 })
+vim.api.nvim_set_hl(0, "fzf_prompt", { ctermfg = 6 })
+vim.api.nvim_set_hl(0, "fzf_spinner", { ctermfg = 6 })
+vim.api.nvim_set_hl(0, "fzf_pointer", { ctermfg = 3 })
 
 -- Color mapping for FZF
 vim.g.fzf_colors = {

@@ -18,7 +18,7 @@ local keymap = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 -- Open floaterm
-keymap("n", "<F9>", ":FloatermNew zsh<CR>", opts)
+keymap("n", "<F9>", ":FloatermNew<CR>", opts)
 keymap("t", "<F9>", "<C-\\><C-n>:FloatermNew zsh<CR>", opts)
 
 -- Toggle terminal
