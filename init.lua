@@ -20,7 +20,9 @@ vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.json",
-  command = "set foldmethod=indent"
+  callback = function()
+    vim.opt.foldmethod = "indent"
+  end
 })
 
 vim.cmd("syntax on")
@@ -59,7 +61,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', vim.fn.stdpath('config') .. '/plugged')
 
 -- Theme
-Plug('folke/tokyonight.nvim')
+Plug('catppuccin/nvim', { ["as"] = 'catppuccin' })
 Plug('akinsho/bufferline.nvim', { ["tag"] = "*" })
 
 -- File browser
@@ -84,7 +86,6 @@ end
 
 -- File search
 Plug('junegunn/fzf', { ["do"] = function() return vim.fn['fzf#install']() end })
--- Plug('ibhagwan/fzf-lua'
 Plug('ibhagwan/fzf-lua')
 
 -- Status bar
@@ -106,9 +107,6 @@ Plug('sheerun/vim-polyglot')             -- Multi-language
 Plug('yuezk/vim-js')                     -- JavaScript
 Plug('MaxMEllon/vim-jsx-pretty')         -- JSX
 
--- Debugging
-Plug('puremourning/vimspector') -- Vimspector
-
 -- Git
 Plug('tpope/vim-fugitive')      -- Git info
 Plug('tpope/vim-rhubarb')
@@ -122,7 +120,7 @@ Plug('tmhedberg/SimpylFold')
 Plug('github/copilot.vim')
 
 -- Input method
-Plug('rlue/vim-barbaric')
+Plug('h-hg/fcitx.nvim')
 
 vim.call('plug#end')
 require("nvim-autopairs").setup {}
@@ -141,7 +139,7 @@ wilder.set_option("renderer", wilder.popupmenu_renderer({
   pumblend = 20,
 }))
 
-vim.cmd("colorscheme tokyonight-moon")
+vim.cmd.colorscheme "catppuccin-mocha"
 vim.g.airline_theme = 'base16'
 require("bufferline").setup {
   options = {
@@ -168,11 +166,27 @@ keymap("n", "<C-Tab>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<C-S-w>", ":bdelete<CR>", opts)
 keymap("n", "<C-S>", ":write<CR>", opts)
 keymap("i", "<C-S>", "<Esc>:write<CR>a", opts)
-keymap("n", "<S-Del>", ":delete<CR>", opts)
-keymap("i", "<S-Del>", "<Esc>:delete<CR>a", opts)
-keymap("i", "<Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-end, { expr = true, noremap = true, silent = true })
+keymap("n", "<S-Del>", function()
+  local clipboard = vim.fn.getreg("+")
+  local clipboard_type = vim.fn.getregtype("+")
+  vim.cmd([[normal! dd]])
+  vim.fn.setreg("+", clipboard, clipboard_type)
+end, opts)
+
+keymap("i", "<S-Del>", function()
+  local clipboard = vim.fn.getreg("+")
+  local clipboard_type = vim.fn.getregtype("+")
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
+  vim.cmd([[normal! dd]])
+  vim.fn.setreg("+", clipboard, clipboard_type)
+end, opts)
+
+keymap("x", "<Del>", function()
+  local clipboard = vim.fn.getreg("+")
+  local clipboard_type = vim.fn.getregtype("+")
+  vim.cmd([[normal! "_d]])
+  vim.fn.setreg("+", clipboard, clipboard_type)
+end, opts)
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
