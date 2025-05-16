@@ -11,7 +11,7 @@ Ensure that you have Neovim installed on your system.
     ```
     Or in Arch-based (btw) systems:  
     ```bash
-    sudo pacman -S neovim neovide
+    sudo pacman -S neovim neovim-qt
     ```
 ## Step 2: Clone this repository
 Clone this repository to the appropriate configuration directory for Neovim:  

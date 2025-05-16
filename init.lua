@@ -17,6 +17,7 @@ vim.opt.synmaxcol = 3000
 vim.opt.lazyredraw = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.guifont = { "JetBrains Mono"}
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.json",
@@ -194,15 +195,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
-if vim.g.neovide then
-  vim.g.neovide_remember_window_size = true
-  vim.g.neovide_cursor_vfx_mode = "pixiedust"
-  vim.opt.guifont = { "JetBrains Mono", "Nom Na Tong" }
-end
-
 local config_dir = vim.fn.stdpath("config") .. "/lua/settings/"
 local files = vim.fn.glob(config_dir .. "*.lua", false, true)
 for _, file in ipairs(files) do
   local relative_path = string.sub(file, #config_dir + 1, -5)
   require("settings." .. relative_path)
 end
+
