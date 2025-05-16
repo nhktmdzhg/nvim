@@ -64,12 +64,9 @@ vim.call('plug#begin', vim.fn.stdpath('config') .. '/plugged')
 Plug('catppuccin/nvim', { ["as"] = 'catppuccin' })
 Plug('akinsho/bufferline.nvim', { ["tag"] = "*" })
 
--- File browser
-Plug('preservim/nerdTree')
-Plug('Xuyuanp/nerdtree-git-plugin')
-Plug('ryanoasis/vim-devicons')
-Plug('unkiwii/vim-nerdtree-sync')
-Plug('jcharum/vim-nerdtree-syntax-highlight', { ["branch"] = 'escape-keys' })
+-- File explorer
+Plug('nvim-tree/nvim-web-devicons')
+Plug('nvim-tree/nvim-tree.lua')
 
 -- wilder.nvim
 if vim.fn.has('nvim') == 1 then
@@ -89,11 +86,10 @@ Plug('junegunn/fzf', { ["do"] = function() return vim.fn['fzf#install']() end })
 Plug('ibhagwan/fzf-lua')
 
 -- Status bar
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
+Plug('nvim-lualine/lualine.nvim')
 
 -- Terminal
-Plug('voldikss/vim-floaterm')
+Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' })
 
 -- Code intellisense
 Plug('neoclide/coc.nvim', { branch = 'release' })
@@ -126,11 +122,10 @@ Plug('h-hg/fcitx.nvim')
 Plug('echasnovski/mini.icons', { ["branch"] = "stable" })
 Plug('goolord/alpha-nvim')
 
-
 vim.call('plug#end')
 require("nvim-autopairs").setup {}
 require('mini.icons').setup()
-require'alpha'.setup(require'alpha.themes.dashboard'.config)
+require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
 
 local wilder = require('wilder')
 
@@ -147,7 +142,6 @@ wilder.set_option("renderer", wilder.popupmenu_renderer({
 }))
 
 vim.cmd.colorscheme "catppuccin-mocha"
-vim.g.airline_theme = 'base16'
 require("bufferline").setup {
   options = {
     indicator = {
@@ -207,4 +201,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "i", false)
   end,
 })
-
