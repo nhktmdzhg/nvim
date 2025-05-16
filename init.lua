@@ -17,7 +17,6 @@ vim.opt.synmaxcol = 3000
 vim.opt.lazyredraw = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
-vim.opt.guifont = { "JetBrains Mono"}
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.json",
