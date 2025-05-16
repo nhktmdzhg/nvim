@@ -122,8 +122,15 @@ Plug('github/copilot.vim')
 -- Input method
 Plug('h-hg/fcitx.nvim')
 
+-- Greeter
+Plug('echasnovski/mini.icons', { ["branch"] = "stable" })
+Plug('goolord/alpha-nvim')
+
+
 vim.call('plug#end')
 require("nvim-autopairs").setup {}
+require('mini.icons').setup()
+require'alpha'.setup(require'alpha.themes.dashboard'.config)
 
 local wilder = require('wilder')
 
@@ -188,16 +195,16 @@ keymap("x", "<Del>", function()
   vim.fn.setreg("+", clipboard, clipboard_type)
 end, opts)
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "i", false)
-  end,
-})
-
 local config_dir = vim.fn.stdpath("config") .. "/lua/settings/"
 local files = vim.fn.glob(config_dir .. "*.lua", false, true)
 for _, file in ipairs(files) do
   local relative_path = string.sub(file, #config_dir + 1, -5)
   require("settings." .. relative_path)
 end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "i", false)
+  end,
+})
 
