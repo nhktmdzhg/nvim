@@ -117,7 +117,7 @@ Plug('github/copilot.vim')
 
 -- Greeter
 Plug('echasnovski/mini.icons', { ["branch"] = "stable" })
-Plug('goolord/alpha-nvim')
+Plug('nhktmdzhg/alpha-nvim')
 
 -- Input method
 Plug('h-hg/fcitx.nvim')
@@ -196,8 +196,3 @@ for _, file in ipairs(files) do
   require("settings." .. relative_path)
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, false, true), "i", false)
-  end,
-})

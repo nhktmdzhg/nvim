@@ -39,9 +39,3 @@ dashboard.section.buttons.val = {
     dashboard.button("q", "󰗽  Quit Neovim", ":qa<CR>"),
 }
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "AlphaReady",
-  callback = function()
-    vim.fn.system("fcitx5-remote -c")
-  end,
-})
