@@ -1,9 +1,21 @@
 ---@diagnostic disable: undefined-global
 -- Vim opt
 local lualine = require("lualine")
+
 local function myname()
   return [[ミツキナノカ]]
 end
+
+local function mymode()
+  local mode_api = require("lualine.utils.mode")
+  local mode_code = vim.api.nvim_get_mode().mode
+  if mode_api.map[mode_code] then
+    return string.lower(mode_api.map[mode_code])
+  else
+    return mode_code
+  end
+end
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -25,7 +37,7 @@ lualine.setup {
     }
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { mymode },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { myname, 'filename' },
     lualine_x = { 'filetype' },
