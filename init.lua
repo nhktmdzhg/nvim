@@ -115,12 +115,12 @@ Plug('tmhedberg/SimpylFold')
 -- Github Copilot
 Plug('github/copilot.vim')
 
--- Input method
-Plug('h-hg/fcitx.nvim')
-
 -- Greeter
 Plug('echasnovski/mini.icons', { ["branch"] = "stable" })
 Plug('goolord/alpha-nvim')
+
+-- Input method
+Plug('h-hg/fcitx.nvim')
 
 vim.call('plug#end')
 require("nvim-autopairs").setup {}
