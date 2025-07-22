@@ -58,11 +58,83 @@ tree.setup({
         end
     },
     renderer = {
-        group_empty = true
+        group_empty = true,
+        highlight_git = true,            -- Enable git highlighting
+        highlight_opened_files = "name", -- Highlight opened files
+        icons = {
+            show = {
+                file = true,
+                folder = true,
+                folder_arrow = true,
+                git = true,
+            },
+            glyphs = {
+                default = "",
+                symlink = "",
+                git = {
+                    unstaged = "✗",
+                    staged = "✓",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                    deleted = "",
+                    ignored = "◌"
+                },
+            },
+        },
+    },
+    diagnostics = {
+        enable = true,        -- Show LSP diagnostics in tree
+        debounce_delay = 50,  -- Debounce delay for diagnostics update
+        show_on_dirs = false, -- Show diagnostics on parent dirs
+        icons = {
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
+        },
+    },
+    git = {
+        enable = true,       -- Enable git integration
+        ignore = true,       -- Hide gitignored files
+        show_on_dirs = true, -- Show git status on directories
+        timeout = 400,       -- Git timeout in ms
     },
     filters = {
         dotfiles = true,
-        custom = {"^.git$"}
+        custom = { "^.git$", "node_modules", ".cache" }, -- Add more common filters
+        exclude = { ".gitignore", ".env.example" }     -- But show these dotfiles
+    },
+    filesystem_watchers = {
+        enable = true,
+        debounce_delay = 50, -- Debounce file system events
+        ignore_dirs = {
+            "node_modules",
+            ".git",
+            ".cache",
+            "target",
+            "build",
+            "dist"
+        },
+    },
+    actions = {
+        open_file = {
+            quit_on_open = false, -- Don't close tree when opening file
+            resize_window = true, -- Resize window after opening file
+            window_picker = {
+                enable = true,
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                exclude = {
+                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                    buftype = { "nofile", "terminal", "help" },
+                },
+            },
+        },
+        change_dir = {
+            enable = true,  -- Change root directory
+            global = false, -- Change only current window's directory
+            restrict_above_cwd = false,
+        },
     },
     sort_by = function(nodes)
         table.sort(nodes, natural_cmp)
@@ -82,7 +154,7 @@ end, opts)
 key("n", "<F6>", function()
     api.tree.reload()
 end, opts)
-vim.api.nvim_create_autocmd({'BufEnter', 'QuitPre'}, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
     nested = false,
     callback = function(e)
         local tree_api = api.tree

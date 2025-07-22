@@ -16,7 +16,7 @@ vim.g.fzf_layout = {
 }
 
 -- Preview window layout
-vim.g.fzf_preview_window = {"right:50%", "ctrl-/"}
+vim.g.fzf_preview_window = { "right:50%", "ctrl-/" }
 
 -- Git commit log format
 vim.g.fzf_commits_log_options = "--graph --color=always --format=\"%C(auto)%h%d %s %C(black)%C(bold)%cr\""
@@ -49,14 +49,14 @@ vim.api.nvim_set_hl(0, "fzf_pointer", {
 
 -- Color mapping for FZF
 vim.g.fzf_colors = {
-    fg = {"fg", "fzf_fg"},
-    hl = {"fg", "fzf_hl"},
-    fg_plus = {"fg", "fzf_fgp"},
-    hl_plus = {"fg", "fzf_hlp"},
-    info = {"fg", "fzf_info"},
-    prompt = {"fg", "fzf_prompt"},
-    pointer = {"fg", "fzf_pointer"},
-    spinner = {"fg", "fzf_spinner"}
+    fg = { "fg", "fzf_fg" },
+    hl = { "fg", "fzf_hl" },
+    fg_plus = { "fg", "fzf_fgp" },
+    hl_plus = { "fg", "fzf_hlp" },
+    info = { "fg", "fzf_info" },
+    prompt = { "fg", "fzf_prompt" },
+    pointer = { "fg", "fzf_pointer" },
+    spinner = { "fg", "fzf_spinner" }
 }
 
 -- Custom commands

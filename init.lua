@@ -18,7 +18,32 @@ vim.opt.lazyredraw = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+-- Performance optimizations
+vim.opt.hidden = true        -- Allow switching buffers without saving
+vim.opt.wrap = false         -- Disable line wrapping for better performance
+vim.opt.conceallevel = 0     -- Show concealed text
+vim.opt.scrolloff = 8        -- Keep 8 lines visible above/below cursor
+vim.opt.sidescrolloff = 8    -- Keep 8 columns visible left/right of cursor
+vim.opt.updatetime = 100     -- Faster completion (default is 4000ms)
+vim.opt.timeoutlen = 500     -- Faster key sequence completion
+vim.opt.redrawtime = 1500    -- Time limit for redrawing
+vim.opt.maxmempattern = 5000 -- Memory limit for pattern matching
+vim.opt.re = 0               -- Use automatic regexp engine selection
+
+-- Better splitting
+vim.opt.splitbelow = true -- New horizontal splits go below
+vim.opt.splitright = true -- New vertical splits go right
+
+-- Improve search
+vim.opt.hlsearch = true  -- Highlight search results
+vim.opt.incsearch = true -- Incremental search
+vim.opt.smartcase = true -- Smart case sensitivity (with ignorecase)
+
+-- Better indentation
+vim.opt.smartindent = true -- Smart autoindenting
+vim.opt.autoindent = true  -- Copy indent from current line
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.json",
     callback = function()
         vim.opt.foldmethod = "indent"
@@ -30,14 +55,14 @@ vim.cmd("syntax on")
 local function should_checktime()
     local current_mode = vim.api.nvim_get_mode().mode
     local cmd_type = vim.v.event == nil and "" or vim.fn.getcmdwintype()
-    return not vim.tbl_contains({"c", "r", "r?", "!", "t"}, current_mode) and cmd_type == ""
+    return not vim.tbl_contains({ "c", "r", "r?", "!", "t" }, current_mode) and cmd_type == ""
 end
 
 local checktime_group = vim.api.nvim_create_augroup("CheckTimeAutoReload", {
     clear = true
 })
 
-vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
     group = checktime_group,
     pattern = "*",
     callback = function()
@@ -47,7 +72,7 @@ vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
     end
 })
 
-vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     group = checktime_group,
     pattern = "*",
     callback = function()
@@ -117,14 +142,14 @@ Plug('preservim/nerdcommenter')
 
 -- Code syntax highlight
 Plug('jackguo380/vim-lsp-cxx-highlight') -- C/C++
-Plug('sheerun/vim-polyglot') -- Multi-language
-Plug('yuezk/vim-js') -- JavaScript
-Plug('MaxMEllon/vim-jsx-pretty') -- JSX
+Plug('sheerun/vim-polyglot')             -- Multi-language
+Plug('yuezk/vim-js')                     -- JavaScript
+Plug('MaxMEllon/vim-jsx-pretty')         -- JSX
 
 -- Git
-Plug('tpope/vim-fugitive') -- Git info
+Plug('tpope/vim-fugitive')      -- Git info
 Plug('tpope/vim-rhubarb')
-Plug('airblade/vim-gitgutter') -- Git diff
+Plug('airblade/vim-gitgutter')  -- Git diff
 Plug('samoshkin/vim-mergetool') -- Merge tool
 
 -- Fold
@@ -145,12 +170,12 @@ Plug('h-hg/fcitx.nvim')
 vim.call('plug#end')
 require("nvim-autopairs").setup {}
 require('mini.icons').setup()
-require'alpha'.setup(require'alpha.themes.dashboard'.config)
+require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
 
 local wilder = require('wilder')
 
 wilder.setup({
-    modes = {":", "/", "?"},
+    modes = { ":", "/", "?" },
     next_key = "<Down>",
     previous_key = "<Up>",
     accept_key = "<Tab>",
@@ -158,7 +183,13 @@ wilder.setup({
 })
 
 wilder.set_option("renderer", wilder.popupmenu_renderer({
-    pumblend = 20
+    pumblend = 20,
+    max_height = "75%",                       -- Limit popup height
+    min_width = "100%",                       -- Full width popup
+    reverse = 0,                              -- Search from top to bottom
+    highlighter = wilder.basic_highlighter(), -- Use basic highlighter for performance
+    left = { " ", wilder.popupmenu_devicons() },
+    right = { " ", wilder.popupmenu_scrollbar() },
 }))
 
 vim.cmd.colorscheme "catppuccin-mocha"
@@ -167,7 +198,32 @@ require("bufferline").setup {
         indicator = {
             style = 'none'
         },
-        diagnostics = "coc"
+        diagnostics = "coc",
+        diagnostics_update_in_insert = false, -- Don't update diagnostics in insert mode
+        show_buffer_icons = true,
+        show_buffer_close_icons = false,      -- Disable close icons for cleaner look
+        show_close_icon = false,              -- Disable global close icon
+        show_tab_indicators = true,
+        persist_buffer_sort = true,           -- Remember buffer order
+        separator_style = "thin",             -- Thin separators for less visual noise
+        enforce_regular_tabs = false,
+        always_show_bufferline = true,
+        sort_by = 'insert_after_current', -- New buffers after current
+        custom_filter = function(buf_number, buf_numbers)
+            -- Hide terminal buffers from bufferline
+            if vim.bo[buf_number].filetype == "toggleterm" then
+                return false
+            end
+            return true
+        end,
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = " File Explorer",
+                text_align = "center",
+                separator = true
+            }
+        },
     }
 }
 
@@ -218,4 +274,3 @@ for _, file in ipairs(files) do
     local relative_path = string.sub(file, #config_dir + 1, -5)
     require("settings." .. relative_path)
 end
-

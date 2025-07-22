@@ -25,8 +25,8 @@ lualine.setup {
             right = '|'
         },
         section_separators = {
-            left = '',
-            right = ''
+            left = '',
+            right = ''
         },
         disabled_filetypes = {
             statusline = {},
@@ -35,26 +35,26 @@ lualine.setup {
         ignore_focus = {},
         always_divide_middle = true,
         always_show_tabline = true,
-        globalstatus = false,
+        globalstatus = true,   -- Use global statusline for better performance
         refresh = {
-            statusline = 100,
-            tabline = 100,
-            winbar = 100
+            statusline = 1000, -- Reduced refresh rate for better performance
+            tabline = 1000,    -- Reduced refresh rate for better performance
+            winbar = 1000      -- Reduced refresh rate for better performance
         }
     },
     sections = {
-        lualine_a = {mymode},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {myname, 'filename'},
-        lualine_x = {'filetype'},
-        lualine_y = {'encoding', 'fileformat'},
-        lualine_z = {'progress', 'location'}
+        lualine_a = { mymode },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { myname, 'filename' },
+        lualine_x = { 'filetype' },
+        lualine_y = { 'encoding', 'fileformat' },
+        lualine_z = { 'progress', 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
     },

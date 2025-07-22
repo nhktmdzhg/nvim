@@ -1,133 +1,369 @@
-This repository contains my configuration files for Neovim.  
-# Installation
-## Step 1: Install Neovim
-Ensure that you have Neovim installed on your system.
-- On Windows:  
-    Download and install the latest release from the [official website](https://neovim.io/)
-- On Linux:  
-    You can typically install Neovim using your package manager. For example, on Debian-based systems:  
-    ```bash
-    sudo apt-get install neovim neovim-qt
-    ```
-    Or in Arch-based (btw) systems:  
-    ```bash
-    sudo pacman -S neovim neovim-qt
-    ```
-## Step 2: Clone this repository
-Clone this repository to the appropriate configuration directory for Neovim:  
-- On Windows:  
-    ```powershell
-    git clone https://github.com/nhktmdzhg/nvim.git .\AppData\Local\nvim
-    ```
-- On Linux:  
-    ```bash
-    git clone https://github.com/nhktmdzhg/nvim.git ~/.config/nvim
-    ```
-## Step 3: Install dependencies
-Ensure that you have `node.js` and `python` installed on your system. These are necessary for some of the Neovim plugins to function correctly.  
-### Node.js
-- On Windows: Download and install the latest release from the [official website](https://nodejs.org/)
-- On Linux: You can typically install Node.js using your package manager. For example, on Debian-based systems:  
-    ```bash
-    sudo apt-get install nodejs npm
-    ```
-    Or in Arch-based (btw) systems:  
-    ```bash
-    sudo pacman -S nodejs npm
-    ```
-### Python
-- On Windows: Download and install the latest release from the [official website](https://www.python.org/)
-- On Linux: You can typically install Python using your package manager. For example, on Debian-based systems:  
-    ```bash
-    sudo apt-get install python3
-    ```
-    Or in Arch-based (btw) systems:  
-    ```bash
-    sudo pacman -S python
-    ```
-### Install Node.js and Python Providers for Neovim
-After installing node.js and python, you need to install the providers:  
-- For `node.js`:  
-    + On Windows:  
-    ```powershell
-    npm install -g neovim
-    ```
-    + On Linux: 
-    ```bash
-    sudo npm install -g neovim
-    ```
-- For `python`:  
-    + On Windows:  
-    ```powershell
-    pip install pynvim
-    ```
-    + On Linux: You can typically install the `pynvim` package using your package manager. For example, on Debian-based systems:  
-    ```bash
-    sudo apt-get install python3-pynvim
-    ```
-    Or in Arch-based (btw) systems:  
-    ```bash
-    sudo pacman -S python-pynvim
-    ```
-  ### Install vim-plug (package manager for vim)
-- On Windows:
-    ```powershell
-    iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
-    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-    ```
-- On Linux:
-    ```bash
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    ```
-## Step 4: Start Neovim and Install Plugins
-Start Neovim by running the following command:  
+# 🚀 Modern Neovim Configuration
+
+<div align="center">
+
+[![Neovim](https://img.shields.io/badge/Neovim-0.8+-57A143?style=flat-square&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Lua](https://img.shields.io/badge/Lua-2C2D72?style=flat-square&logo=lua&logoColor=white)](https://www.lua.org/)
+[![License](https://img.shields.io/github/license/nhktmdzhg/nvim?style=flat-square)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/nhktmdzhg/nvim?style=flat-square)](https://github.com/nhktmdzhg/nvim/stargazers)
+
+*A carefully crafted Neovim configuration focused on performance, productivity, and aesthetics*
+
+</div>
+
+## ✨ Features
+
+### 🎨 **User Interface**
+- **Theme**: Catppuccin Mocha with beautiful color scheme
+- **Statusline**: Lualine with custom components and git integration
+- **Bufferline**: Clean tab-like buffer navigation with diagnostics
+- **File Explorer**: Nvim-tree with floating window and natural sorting
+- **Greeter**: Alpha-nvim dashboard for a welcoming start experience
+- **Terminal**: Toggleterm with floating terminal interface
+
+### 🧠 **Intelligence & Completion**
+- **LSP**: COC.nvim for comprehensive language server support
+- **Autocompletion**: Smart completion with tab navigation
+- **Autopairs**: Automatic bracket and quote pairing
+- **Emmet**: HTML/CSS expansion support
+- **Commenting**: NERDCommenter for easy code commenting
+- **GitHub Copilot**: AI-powered code suggestions
+
+### 🔍 **Search & Navigation**
+- **Fuzzy Finder**: FZF with Lua integration for fast file searching
+- **Command Palette**: Wilder.nvim for enhanced command completion
+- **File Tree**: Natural sorting with git status indicators
+
+### 🎯 **Language Support**
+- **Multi-language**: Syntax highlighting via vim-polyglot
+- **C/C++**: Enhanced highlighting with vim-lsp-cxx-highlight
+- **JavaScript/JSX**: Modern JS and React support
+- **Python**: Optimized folding with SimpylFold
+- **Web Development**: CSS, HTML, and JavaScript intelligence
+
+### 🔄 **Git Integration**
+- **Fugitive**: Comprehensive git operations
+- **GitGutter**: Real-time diff indicators in sign column
+- **Rhubarb**: GitHub integration for fugitive
+- **Merge Tool**: Advanced conflict resolution
+
+### ⚡ **Performance Optimizations**
+- Lazy loading for faster startup
+- Optimized redraw settings
+- Memory-efficient plugin configuration
+- Background process management
+
+## 📋 Prerequisites
+
+Before installing this configuration, ensure you have the following dependencies:
+
+### Required
+- **Neovim** ≥ 0.8.0
+- **Git** for plugin management
+- **Node.js** ≥ 16.0 (for COC.nvim)
+- **Python** 3.6+ with pip
+
+### Optional but Recommended
+- **ripgrep** for faster searching
+- **fd** for file finding
+- **clangd** for C/C++ language server
+- **JetBrains Mono Nerd Font** for better icons and ligatures
+
+## 🚀 Installation
+
+### 1. Install Neovim
+
+<details>
+<summary><b>📦 Linux Installation</b></summary>
+
+#### Debian/Ubuntu
 ```bash
-nvim
+sudo apt update
+sudo apt install neovim python3-neovim
 ```
-Then run the following command to install the plugins:  
-```vim
-:PlugInstall
+
+#### Arch Linux
+```bash
+sudo pacman -S neovim python-pynvim
 ```
-## Step 5: Install Language Extensions for CoC
-To enable autocompletion and other language features, you need to install the language extensions for CoC.
-For example, to install an extension for C/C++ (you need to have `clangd` installed on your system):  
+
+#### Fedora
+```bash
+sudo dnf install neovim python3-neovim
+```
+
+</details>
+
+<details>
+<summary><b>🪟 Windows Installation</b></summary>
+
+Download the latest release from the [official Neovim website](https://neovim.io/), or use a package manager:
+
+#### Using Chocolatey
+```powershell
+choco install neovim
+```
+
+#### Using Scoop
+```powershell
+scoop install neovim
+```
+
+</details>
+
+### 2. Install Dependencies
+
+#### Node.js and npm
+<details>
+<summary>Installation methods</summary>
+
+**Linux (Ubuntu/Debian):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+**Linux (Arch):**
+```bash
+sudo pacman -S nodejs npm
+```
+
+**Windows:**
+Download from [nodejs.org](https://nodejs.org/) or use package manager.
+
+</details>
+
+#### Python and pip
+<details>
+<summary>Installation methods</summary>
+
+**Linux:**
+```bash
+# Usually pre-installed, but if needed:
+sudo apt install python3 python3-pip  # Ubuntu/Debian
+sudo pacman -S python python-pip      # Arch
+```
+
+**Windows:**
+Download from [python.org](https://www.python.org/) or use package manager.
+
+</details>
+
+### 3. Install Neovim Providers
+
+```bash
+# Node.js provider
+npm install -g neovim
+
+# Python provider (choose one method)
+pip install pynvim
+# OR on Linux
+sudo apt install python3-pynvim  # Ubuntu/Debian
+sudo pacman -S python-pynvim     # Arch
+```
+
+### 4. Clone Configuration
+
+**Linux/macOS:**
+```bash
+# Backup existing config (if any)
+mv ~/.config/nvim ~/.config/nvim.backup 2>/dev/null || true
+
+# Clone this configuration
+git clone https://github.com/nhktmdzhg/nvim.git ~/.config/nvim
+```
+
+**Windows:**
+```powershell
+# Backup existing config (if any)
+if (Test-Path "$env:LOCALAPPDATA\nvim") {
+    Rename-Item "$env:LOCALAPPDATA\nvim" "$env:LOCALAPPDATA\nvim.backup"
+}
+
+# Clone this configuration
+git clone https://github.com/nhktmdzhg/nvim.git "$env:LOCALAPPDATA\nvim"
+```
+
+### 5. Install Plugins
+
+1. Start Neovim:
+   ```bash
+   nvim
+   ```
+
+2. Install plugins (vim-plug will be automatically installed):
+   ```vim
+   :PlugInstall
+   ```
+
+3. Restart Neovim after installation completes.
+
+### 6. Install Language Servers (Optional)
+
+For enhanced language support, install COC extensions:
+
 ```vim
+" Common language servers
+:CocInstall coc-json coc-html coc-css coc-tsserver coc-pyright
+
+" For C/C++ (requires clangd)
 :CocInstall coc-clangd
+
+" For more languages, see: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 ```
-You can find list of available extensions on the [CoC Extensions Wiki](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions).
-# Usage
-After completing the above steps, your Neovim setup should be ready to use. You can customize further according to your needs.  
-# References
-The following are some useful resources for learning more about Neovim and the plugins used in this configuration. You can refer to these resources for more information on how to customize your Neovim setup.
-- [Neovim Documentation](https://neovim.io/doc/user/)
-- [vim-plug Github](https://github.com/junegunn/vim-plug)
-- [CoC.nvim GitHub](https://github.com/neoclide/coc.nvim)
-- [substrata.nvim GitHub](https://github.com/kvrohit/substrata.nvim)
-- [bufferline.nvim GitHub](https://github.com/akinsho/bufferline.nvim)
-- [NERDTree GitHub](https://github.com/preservim/nerdtree)
-- [nerdtree-git-plugin GitHub](https://github.com/Xuyuanp/nerdtree-git-plugin)
-- [vim-devicons GitHub](https://github.com/ryanoasis/vim-devicons)
-- [vim-nerdtree-sync GitHub](https://github.com/unkiwii/vim-nerdtree-sync)
-- [vim-nerdtree-syntax-highlight GitHub](https://github.com/jcharum/vim-nerdtree-syntax-highlight)
-- [wilder.nvim GitHub](https://github.com/gelguy/wilder.nvim)
-- [fzf GitHub](https://github.com/junegunn/fzf)
-- [fzf.vim GitHub](https://github.com/junegunn/fzf.vim)
-- [vim-airline GitHub](https://github.com/vim-airline/vim-airline)
-- [vim-airline-themes GitHub](https://github.com/vim-airline/vim-airline-themes)
-- [vim-floaterm GitHub](https://github.com/voldikss/vim-floaterm)
-- [auto-pairs GitHub](https://github.com/jiangmiao/auto-pairs)
-- [emmet-vim GitHub](https://github.com/mattn/emmet-vim)
-- [nerdcommenter GitHub](https://github.com/preservim/nerdcommenter)
-- [vim-lsp-cxx-highlight GitHub](https://github.com/jackguo380/vim-lsp-cxx-highlight)
-- [java-syntax.vim GitHub](https://github.com/uiiaoo/java-syntax.vim)
-- [vim-polyglot GitHub](https://github.com/sheerun/vim-polyglot)
-- [semshi GitHub](https://github.com/numirias/semshi)
-- [vimspector GitHub](https://github.com/puremourning/vimspector)
-- [vim-fugitive GitHub](https://github.com/tpope/vim-fugitive)
-- [vim-rhubarb GitHub](https://github.com/tpope/vim-rhubarb)
-- [vim-gitgutter GitHub](https://github.com/airblade/vim-gitgutter)
-- [vim-mergetool GitHub](https://github.com/samoshkin/vim-mergetool)
-- [SimpylFold GitHub](https://github.com/tmhedberg/SimpylFold)
-- [Github Copilot](https://github.com/github/copilot.vim)  
-Happy coding!
+
+## ⌨️ Key Mappings
+
+### General
+| Key | Action |
+|-----|--------|
+| `Ctrl + A` | Select all |
+| `Ctrl + S` | Save file |
+| `Ctrl + Shift + W` | Close buffer |
+| `Ctrl + Tab` | Next buffer |
+| `/\` | Clear search highlight |
+| `Shift + Del` | Delete line without affecting clipboard |
+
+### File Management
+| Key | Action |
+|-----|--------|
+| `Space + e` | Toggle file explorer |
+| `Ctrl + P` | Find files |
+| `Ctrl + F` | Search in files |
+
+### Terminal
+| Key | Action |
+|-----|--------|
+| `Ctrl + \` | Toggle floating terminal |
+
+### Git
+| Key | Action |
+|-----|--------|
+| `]c` | Next git change |
+| `[c` | Previous git change |
+
+## 🛠️ Customization
+
+The configuration is modular and easy to customize:
+
+- **Core settings**: `init.lua`
+- **Plugin configurations**: `lua/settings/`
+- **Theme settings**: Modify Catppuccin setup in `init.lua`
+- **Keymaps**: Add custom mappings in `init.lua`
+
+## 🧩 Plugin Overview
+
+<details>
+<summary><b>🎨 UI & Appearance</b></summary>
+
+- **[catppuccin](https://github.com/catppuccin/nvim)** - Modern and vibrant colorscheme
+- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** - Buffer management with tabs
+- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** - Fast and customizable statusline
+- **[alpha-nvim](https://github.com/goolord/alpha-nvim)** - Dashboard and greeter
+- **[nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)** - File type icons
+- **[mini.icons](https://github.com/echasnovski/mini.icons)** - Additional icon support
+
+</details>
+
+<details>
+<summary><b>📁 File Management</b></summary>
+
+- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** - File explorer tree
+- **[fzf](https://github.com/junegunn/fzf)** - Command-line fuzzy finder
+- **[fzf-lua](https://github.com/ibhagwan/fzf-lua)** - Lua-based FZF integration
+
+</details>
+
+<details>
+<summary><b>🧠 Language & Completion</b></summary>
+
+- **[coc.nvim](https://github.com/neoclide/coc.nvim)** - Language server client
+- **[nvim-autopairs](https://github.com/windwp/nvim-autopairs)** - Auto-close brackets
+- **[emmet-vim](https://github.com/mattn/emmet-vim)** - HTML/CSS expansion
+- **[nerdcommenter](https://github.com/preservim/nerdcommenter)** - Easy commenting
+
+</details>
+
+<details>
+<summary><b>🎯 Language Support</b></summary>
+
+- **[vim-polyglot](https://github.com/sheerun/vim-polyglot)** - Multi-language pack
+- **[vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)** - C/C++ syntax
+- **[vim-js](https://github.com/yuezk/vim-js)** - JavaScript support
+- **[vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty)** - JSX syntax
+- **[SimpylFold](https://github.com/tmhedberg/SimpylFold)** - Python folding
+
+</details>
+
+<details>
+<summary><b>🔄 Git Integration</b></summary>
+
+- **[vim-fugitive](https://github.com/tpope/vim-fugitive)** - Git wrapper
+- **[vim-rhubarb](https://github.com/tpope/vim-rhubarb)** - GitHub integration
+- **[vim-gitgutter](https://github.com/airblade/vim-gitgutter)** - Git diff indicators
+- **[vim-mergetool](https://github.com/samoshkin/vim-mergetool)** - Merge conflict resolution
+
+</details>
+
+<details>
+<summary><b>⚡ Utilities</b></summary>
+
+- **[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)** - Terminal management
+- **[wilder.nvim](https://github.com/gelguy/wilder.nvim)** - Command completion
+- **[copilot.vim](https://github.com/github/copilot.vim)** - AI code suggestions
+- **[fcitx.nvim](https://github.com/h-hg/fcitx.nvim)** - Input method support
+
+</details>
+
+## 🔧 Troubleshooting
+
+<details>
+<summary><b>Common Issues</b></summary>
+
+**Plugin installation fails:**
+- Ensure you have git installed and configured
+- Check internet connection
+- Try `:PlugClean` then `:PlugInstall`
+
+**COC language servers not working:**
+- Install Node.js and ensure it's in PATH
+- Run `:CocInfo` to check status
+- Install language-specific tools (e.g., clangd for C++)
+
+**Icons not displaying:**
+- Install a Nerd Font
+- Set your terminal to use the Nerd Font
+- Restart terminal and Neovim
+
+**Slow startup:**
+- Check `:StartupTime` (if available)
+- Disable unnecessary plugins
+- Update to latest Neovim version
+
+</details>
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+Special thanks to all the plugin authors and the Neovim community for making this configuration possible.
+
+---
+
+<div align="center">
+
+**⭐ Star this repository if you find it helpful!**
+
+*Made with ❤️ for the Neovim community*
+
+</div>

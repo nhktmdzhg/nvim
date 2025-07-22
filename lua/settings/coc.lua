@@ -1,11 +1,16 @@
 ---@diagnostic disable: undefined-global
 -- Coc global config
-vim.g.coc_global_extensions = {"coc-css", "coc-html", "coc-json", "coc-jedi"}
+vim.g.coc_global_extensions = { "coc-css", "coc-html", "coc-json", "coc-jedi" }
 
 -- Coc config
 vim.opt.encoding = "utf-8"
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
+
+-- Improve CoC performance
+vim.g.coc_node_args = { '--max-old-space-size=8192' } -- Increase Node.js memory limit
+vim.g.coc_enable_locationlist = 0                   -- Disable location list for better performance
+vim.g.coc_disable_transparent_cursor = 1            -- Disable transparent cursor
 
 function _G.check_back_space()
     local col = vim.fn.col('.') - 1
