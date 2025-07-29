@@ -162,10 +162,7 @@ Plug('github/copilot.vim')
 Plug('echasnovski/mini.icons', {
     ["branch"] = "stable"
 })
-Plug('nhktmdzhg/alpha-nvim')
-
--- Input method
-Plug('h-hg/fcitx.nvim')
+Plug('goolord/alpha-nvim')
 
 vim.call('plug#end')
 require("nvim-autopairs").setup {}

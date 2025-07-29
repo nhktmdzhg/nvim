@@ -311,7 +311,6 @@ The configuration is modular and easy to customize:
 - **[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)** - Terminal management
 - **[wilder.nvim](https://github.com/gelguy/wilder.nvim)** - Command completion
 - **[copilot.vim](https://github.com/github/copilot.vim)** - AI code suggestions
-- **[fcitx.nvim](https://github.com/h-hg/fcitx.nvim)** - Input method support
 
 </details>
 
