@@ -7,13 +7,14 @@
 [![License](https://img.shields.io/github/license/nhktmdzhg/nvim?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/nhktmdzhg/nvim?style=flat-square)](https://github.com/nhktmdzhg/nvim/stargazers)
 
-*A carefully crafted Neovim configuration focused on performance, productivity, and aesthetics*
+_A carefully crafted Neovim configuration focused on performance, productivity, and aesthetics_
 
 </div>
 
 ## ✨ Features
 
 ### 🎨 **User Interface**
+
 - **Theme**: Catppuccin Mocha with beautiful color scheme
 - **Statusline**: Lualine with custom components and git integration
 - **Bufferline**: Clean tab-like buffer navigation with diagnostics
@@ -22,6 +23,7 @@
 - **Terminal**: Toggleterm with floating terminal interface
 
 ### 🧠 **Intelligence & Completion**
+
 - **LSP**: COC.nvim for comprehensive language server support
 - **Autocompletion**: Smart completion with tab navigation
 - **Autopairs**: Automatic bracket and quote pairing
@@ -30,11 +32,13 @@
 - **GitHub Copilot**: AI-powered code suggestions
 
 ### 🔍 **Search & Navigation**
+
 - **Fuzzy Finder**: FZF with Lua integration for fast file searching
 - **Command Palette**: Wilder.nvim for enhanced command completion
 - **File Tree**: Natural sorting with git status indicators
 
 ### 🎯 **Language Support**
+
 - **Multi-language**: Syntax highlighting via vim-polyglot
 - **C/C++**: Enhanced highlighting with vim-lsp-cxx-highlight
 - **JavaScript/JSX**: Modern JS and React support
@@ -42,12 +46,14 @@
 - **Web Development**: CSS, HTML, and JavaScript intelligence
 
 ### 🔄 **Git Integration**
+
 - **Fugitive**: Comprehensive git operations
 - **GitGutter**: Real-time diff indicators in sign column
 - **Rhubarb**: GitHub integration for fugitive
 - **Merge Tool**: Advanced conflict resolution
 
 ### ⚡ **Performance Optimizations**
+
 - Lazy loading for faster startup
 - Optimized redraw settings
 - Memory-efficient plugin configuration
@@ -58,12 +64,14 @@
 Before installing this configuration, ensure you have the following dependencies:
 
 ### Required
+
 - **Neovim** ≥ 0.8.0
 - **Git** for plugin management
 - **Node.js** ≥ 16.0 (for COC.nvim)
 - **Python** 3.6+ with pip
 
 ### Optional but Recommended
+
 - **ripgrep** for faster searching
 - **fd** for file finding
 - **clangd** for C/C++ language server
@@ -77,17 +85,20 @@ Before installing this configuration, ensure you have the following dependencies
 <summary><b>📦 Linux Installation</b></summary>
 
 #### Debian/Ubuntu
+
 ```bash
 sudo apt update
 sudo apt install neovim python3-neovim
 ```
 
 #### Arch Linux
+
 ```bash
 sudo pacman -S neovim python-pynvim
 ```
 
 #### Fedora
+
 ```bash
 sudo dnf install neovim python3-neovim
 ```
@@ -100,11 +111,13 @@ sudo dnf install neovim python3-neovim
 Download the latest release from the [official Neovim website](https://neovim.io/), or use a package manager:
 
 #### Using Chocolatey
+
 ```powershell
 choco install neovim
 ```
 
 #### Using Scoop
+
 ```powershell
 scoop install neovim
 ```
@@ -114,16 +127,19 @@ scoop install neovim
 ### 2. Install Dependencies
 
 #### Node.js and npm
+
 <details>
 <summary>Installation methods</summary>
 
 **Linux (Ubuntu/Debian):**
+
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
 **Linux (Arch):**
+
 ```bash
 sudo pacman -S nodejs npm
 ```
@@ -134,10 +150,12 @@ Download from [nodejs.org](https://nodejs.org/) or use package manager.
 </details>
 
 #### Python and pip
+
 <details>
 <summary>Installation methods</summary>
 
 **Linux:**
+
 ```bash
 # Usually pre-installed, but if needed:
 sudo apt install python3 python3-pip  # Ubuntu/Debian
@@ -165,6 +183,7 @@ sudo pacman -S python-pynvim     # Arch
 ### 4. Clone Configuration
 
 **Linux/macOS:**
+
 ```bash
 # Backup existing config (if any)
 mv ~/.config/nvim ~/.config/nvim.backup 2>/dev/null || true
@@ -174,6 +193,7 @@ git clone https://github.com/nhktmdzhg/nvim.git ~/.config/nvim
 ```
 
 **Windows:**
+
 ```powershell
 # Backup existing config (if any)
 if (Test-Path "$env:LOCALAPPDATA\nvim") {
@@ -183,20 +203,6 @@ if (Test-Path "$env:LOCALAPPDATA\nvim") {
 # Clone this configuration
 git clone https://github.com/nhktmdzhg/nvim.git "$env:LOCALAPPDATA\nvim"
 ```
-
-### 5. Install Plugins
-
-1. Start Neovim:
-   ```bash
-   nvim
-   ```
-
-2. Install plugins (vim-plug will be automatically installed):
-   ```vim
-   :PlugInstall
-   ```
-
-3. Restart Neovim after installation completes.
 
 ### 6. Install Language Servers (Optional)
 
@@ -215,31 +221,35 @@ For enhanced language support, install COC extensions:
 ## ⌨️ Key Mappings
 
 ### General
-| Key | Action |
-|-----|--------|
-| `Ctrl + A` | Select all |
-| `Ctrl + S` | Save file |
-| `Ctrl + Shift + W` | Close buffer |
-| `Ctrl + Tab` | Next buffer |
-| `/\` | Clear search highlight |
-| `Shift + Del` | Delete line without affecting clipboard |
+
+| Key                | Action                                  |
+| ------------------ | --------------------------------------- |
+| `Ctrl + A`         | Select all                              |
+| `Ctrl + S`         | Save file                               |
+| `Ctrl + Shift + W` | Close buffer                            |
+| `Ctrl + Tab`       | Next buffer                             |
+| `/\`               | Clear search highlight                  |
+| `Shift + Del`      | Delete line without affecting clipboard |
 
 ### File Management
-| Key | Action |
-|-----|--------|
+
+| Key         | Action               |
+| ----------- | -------------------- |
 | `Space + e` | Toggle file explorer |
-| `Ctrl + P` | Find files |
-| `Ctrl + F` | Search in files |
+| `Ctrl + P`  | Find files           |
+| `Ctrl + F`  | Search in files      |
 
 ### Terminal
-| Key | Action |
-|-----|--------|
+
+| Key        | Action                   |
+| ---------- | ------------------------ |
 | `Ctrl + \` | Toggle floating terminal |
 
 ### Git
-| Key | Action |
-|-----|--------|
-| `]c` | Next git change |
+
+| Key  | Action              |
+| ---- | ------------------- |
+| `]c` | Next git change     |
 | `[c` | Previous git change |
 
 ## 🛠️ Customization
@@ -320,21 +330,25 @@ The configuration is modular and easy to customize:
 <summary><b>Common Issues</b></summary>
 
 **Plugin installation fails:**
+
 - Ensure you have git installed and configured
 - Check internet connection
 - Try `:PlugClean` then `:PlugInstall`
 
 **COC language servers not working:**
+
 - Install Node.js and ensure it's in PATH
 - Run `:CocInfo` to check status
 - Install language-specific tools (e.g., clangd for C++)
 
 **Icons not displaying:**
+
 - Install a Nerd Font
 - Set your terminal to use the Nerd Font
 - Restart terminal and Neovim
 
 **Slow startup:**
+
 - Check `:StartupTime` (if available)
 - Disable unnecessary plugins
 - Update to latest Neovim version
@@ -355,6 +369,7 @@ Contributions are welcome! Please feel free to:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
+
 Special thanks to all the plugin authors and the Neovim community for making this configuration possible.
 
 ---
@@ -363,6 +378,6 @@ Special thanks to all the plugin authors and the Neovim community for making thi
 
 **⭐ Star this repository if you find it helpful!**
 
-*Made with ❤️ for the Neovim community*
+_Made with ❤️ for the Neovim community_
 
 </div>

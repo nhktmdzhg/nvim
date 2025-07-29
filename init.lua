@@ -83,146 +83,76 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 })
 
 local vim = vim
-local Plug = vim.fn['plug#']
 
-vim.call('plug#begin', vim.fn.stdpath('config') .. '/plugged')
-
--- Theme
-Plug('catppuccin/nvim', {
-    ["as"] = 'catppuccin'
-})
-Plug('akinsho/bufferline.nvim', {
-    ["tag"] = "*"
-})
-
--- File explorer
-Plug('nvim-tree/nvim-web-devicons')
-Plug('nvim-tree/nvim-tree.lua')
-
--- wilder.nvim
-if vim.fn.has('nvim') == 1 then
-    function UpdateRemotePlugins(...)
-        local rtp = vim.opt.runtimepath:get()
-        vim.opt.runtimepath:prepend(rtp)
-        vim.cmd("UpdateRemotePlugins")
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
     end
-
-    Plug('gelguy/wilder.nvim', {
-        ["do"] = function(...)
-            UpdateRemotePlugins(...)
-        end
-    })
-else
-    Plug('gelguy/wilder.nvim')
 end
+vim.opt.rtp:prepend(lazypath)
 
--- File search
-Plug('junegunn/fzf', {
-    ["do"] = function()
-        return vim.fn['fzf#install']()
-    end
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- Setup lazy.nvim
+require("lazy").setup({
+    spec = {
+        { 'catppuccin/nvim',             name = 'catppuccin', lazy = false, priority = 1000 },
+        { 'akinsho/bufferline.nvim',     version = '*',       lazy = true },
+        { 'nvim-tree/nvim-web-devicons', lazy = false },
+        { 'nvim-tree/nvim-tree.lua',     lazy = true },
+        {
+            'gelguy/wilder.nvim',
+            lazy = true,
+            build = function()
+                local rtp = vim.opt.runtimepath:get()
+                vim.opt.runtimepath:prepend(rtp)
+                vim.cmd("UpdateRemotePlugins")
+            end
+        },
+        {
+            'junegunn/fzf',
+            build = function()
+                return vim.fn['fzf#install']()
+            end,
+            lazy = false
+        },
+        { 'ibhagwan/fzf-lua',                 lazy = false },
+        { 'nvim-lualine/lualine.nvim',        lazy = true },
+        { 'akinsho/toggleterm.nvim',          version = '*',      lazy = true },
+        { 'neoclide/coc.nvim',                branch = 'release', lazy = false },
+        { 'windwp/nvim-autopairs',            lazy = false },
+        { 'mattn/emmet-vim',                  lazy = false },
+        { 'preservim/nerdcommenter',          lazy = false },
+        { 'jackguo380/vim-lsp-cxx-highlight', lazy = true,        ft = { "cpp", "c", "h", "hpp" } },               -- C/C++
+        { 'sheerun/vim-polyglot',             lazy = true,        event = "BufReadPost" },                         -- Multi-language
+        { 'yuezk/vim-js',                     lazy = true,        ft = { "javascript", "javascriptreact" } },      -- JavaScript
+        { 'MaxMEllon/vim-jsx-pretty',         lazy = true,        ft = { "javascript", "javascriptreact" } },      -- JSX
+        { 'tpope/vim-fugitive',               lazy = false },                                                      -- Git information
+        { 'tpope/vim-rhubarb',                lazy = false },                                                      -- GitHub integration
+        { 'airblade/vim-gitgutter',           lazy = true,        event = "BufReadPost" },                         -- Git diff indicators
+        { 'samoshkin/vim-mergetool',          lazy = true,        cmd = { "MergetoolToggle", "MergetoolStart" } }, -- Merge tool
+        { 'tmhedberg/SimpylFold',             lazy = true,        ft = "python" },                                 -- Python folding
+        { 'github/copilot.vim',               lazy = false },                                                      -- GitHub Copilot
+        { 'echasnovski/mini.icons',           lazy = false,       branch = 'stable' },                             -- Mini icons
+        { 'goolord/alpha-nvim',               lazy = true },                                                       -- Greeter
+    },
+    checker = { enabled = false },
 })
-Plug('ibhagwan/fzf-lua')
 
--- Status bar
-Plug('nvim-lualine/lualine.nvim')
-
--- Terminal
-Plug('akinsho/toggleterm.nvim', {
-    ['tag'] = '*'
-})
-
--- Code intellisense
-Plug('neoclide/coc.nvim', {
-    branch = 'release'
-})
-Plug('windwp/nvim-autopairs')
-Plug('mattn/emmet-vim')
-Plug('preservim/nerdcommenter')
-
--- Code syntax highlight
-Plug('jackguo380/vim-lsp-cxx-highlight') -- C/C++
-Plug('sheerun/vim-polyglot')             -- Multi-language
-Plug('yuezk/vim-js')                     -- JavaScript
-Plug('MaxMEllon/vim-jsx-pretty')         -- JSX
-
--- Git
-Plug('tpope/vim-fugitive')      -- Git info
-Plug('tpope/vim-rhubarb')
-Plug('airblade/vim-gitgutter')  -- Git diff
-Plug('samoshkin/vim-mergetool') -- Merge tool
-
--- Fold
-Plug('tmhedberg/SimpylFold')
-
--- Github Copilot
-Plug('github/copilot.vim')
-
--- Greeter
-Plug('echasnovski/mini.icons', {
-    ["branch"] = "stable"
-})
-Plug('goolord/alpha-nvim')
-
-vim.call('plug#end')
 require("nvim-autopairs").setup {}
 require('mini.icons').setup()
-require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-
-local wilder = require('wilder')
-
-wilder.setup({
-    modes = { ":", "/", "?" },
-    next_key = "<Down>",
-    previous_key = "<Up>",
-    accept_key = "<Tab>",
-    reject_key = "<S-Tab>"
-})
-
-wilder.set_option("renderer", wilder.popupmenu_renderer({
-    pumblend = 20,
-    max_height = "75%",                       -- Limit popup height
-    min_width = "100%",                       -- Full width popup
-    reverse = 0,                              -- Search from top to bottom
-    highlighter = wilder.basic_highlighter(), -- Use basic highlighter for performance
-    left = { " ", wilder.popupmenu_devicons() },
-    right = { " ", wilder.popupmenu_scrollbar() },
-}))
-
 vim.cmd.colorscheme "catppuccin-mocha"
-require("bufferline").setup {
-    options = {
-        indicator = {
-            style = 'none'
-        },
-        diagnostics = "coc",
-        diagnostics_update_in_insert = false, -- Don't update diagnostics in insert mode
-        show_buffer_icons = true,
-        show_buffer_close_icons = false,      -- Disable close icons for cleaner look
-        show_close_icon = false,              -- Disable global close icon
-        show_tab_indicators = true,
-        persist_buffer_sort = true,           -- Remember buffer order
-        separator_style = "thin",             -- Thin separators for less visual noise
-        enforce_regular_tabs = false,
-        always_show_bufferline = true,
-        sort_by = 'insert_after_current', -- New buffers after current
-        custom_filter = function(buf_number, buf_numbers)
-            -- Hide terminal buffers from bufferline
-            if vim.bo[buf_number].filetype == "toggleterm" then
-                return false
-            end
-            return true
-        end,
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = " File Explorer",
-                text_align = "center",
-                separator = true
-            }
-        },
-    }
-}
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
