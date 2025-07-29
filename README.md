@@ -67,7 +67,7 @@ Before installing this configuration, ensure you have the following dependencies
 - **ripgrep** for faster searching
 - **fd** for file finding
 - **clangd** for C/C++ language server
-- **JetBrains Mono Nerd Font** for better icons and ligatures
+- **Maple Mono NF CN** for better icons and ligatures
 
 ## 🚀 Installation
 
