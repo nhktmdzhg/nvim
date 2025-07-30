@@ -257,72 +257,59 @@ For enhanced language support, install COC extensions:
 The configuration is modular and easy to customize:
 
 - **Core settings**: `init.lua`
-- **Plugin configurations**: `lua/settings/`
+- **Plugin configurations**: `lua/settings/` and `lua/plugins/`
 - **Theme settings**: Modify Catppuccin setup in `init.lua`
 - **Keymaps**: Add custom mappings in `init.lua`
 
 ## 🧩 Plugin Overview
 
-<details>
-<summary><b>🎨 UI & Appearance</b></summary>
+### 🎨 UI & Appearance
+- [catppuccin/nvim](https://github.com/catppuccin/nvim) — Modern color scheme
+- [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) — Tab-style buffer management
+- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — Customizable statusline
+- [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) — Startup dashboard
+- [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) — File icons
+- [echasnovski/mini.icons](https://github.com/echasnovski/mini.icons) — Extra icon support
 
-- **[catppuccin](https://github.com/catppuccin/nvim)** - Modern and vibrant colorscheme
-- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** - Buffer management with tabs
-- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** - Fast and customizable statusline
-- **[alpha-nvim](https://github.com/goolord/alpha-nvim)** - Dashboard and greeter
-- **[nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)** - File type icons
-- **[mini.icons](https://github.com/echasnovski/mini.icons)** - Additional icon support
+### 📁 File Management & Navigation
+- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) — File explorer tree
+- [junegunn/fzf](https://github.com/junegunn/fzf) — Fuzzy finder
+- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) — FZF integration in Lua
 
-</details>
+### 🧠 LSP, Completion & Formatting
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP configuration
+- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) — LSP/DAP manager
+- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) — Mason & LSPConfig integration
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) — Autocompletion engine
+- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
+- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
+- [hrsh7th/cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip)
+- [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
+- [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) — Code formatter
+- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) — Auto pairs
+- [mattn/emmet-vim](https://github.com/mattn/emmet-vim) — Emmet for HTML/CSS
+- [preservim/nerdcommenter](https://github.com/preservim/nerdcommenter) — Fast code commenting
+- [github/copilot.vim](https://github.com/github/copilot.vim) — AI code suggestion
 
-<details>
-<summary><b>📁 File Management</b></summary>
+### 🎯 Language & Syntax
+- [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot) — Multi-language support
+- [jackguo381/vim-lsp-cxx-highlight](https://github.com/jackguo381/vim-lsp-cxx-highlight) — C/C++ highlight
+- [yuezk/vim-js](https://github.com/yuezk/vim-js) — JavaScript
+- [MaxMEllon/vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) — JSX
+- [tmhedberg/SimpylFold](https://github.com/tmhedberg/SimpylFold) — Python folding
 
-- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** - File explorer tree
-- **[fzf](https://github.com/junegunn/fzf)** - Command-line fuzzy finder
-- **[fzf-lua](https://github.com/ibhagwan/fzf-lua)** - Lua-based FZF integration
+### 🔄 Git Integration
+- [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) — Git wrapper
+- [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb) — GitHub integration
+- [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter) — Git diff indicators
+- [samoshkin/vim-mergetool](https://github.com/samoshkin/vim-mergetool) — Merge tool
 
-</details>
+### ⚡ Utilities & Terminal
+- [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) — Floating terminal
 
-<details>
-<summary><b>🧠 Language & Completion</b></summary>
-
-- **[coc.nvim](https://github.com/neoclide/coc.nvim)** - Language server client
-- **[nvim-autopairs](https://github.com/windwp/nvim-autopairs)** - Auto-close brackets
-- **[emmet-vim](https://github.com/mattn/emmet-vim)** - HTML/CSS expansion
-- **[nerdcommenter](https://github.com/preservim/nerdcommenter)** - Easy commenting
-
-</details>
-
-<details>
-<summary><b>🎯 Language Support</b></summary>
-
-- **[vim-polyglot](https://github.com/sheerun/vim-polyglot)** - Multi-language pack
-- **[vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)** - C/C++ syntax
-- **[vim-js](https://github.com/yuezk/vim-js)** - JavaScript support
-- **[vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty)** - JSX syntax
-- **[SimpylFold](https://github.com/tmhedberg/SimpylFold)** - Python folding
-
-</details>
-
-<details>
-<summary><b>🔄 Git Integration</b></summary>
-
-- **[vim-fugitive](https://github.com/tpope/vim-fugitive)** - Git wrapper
-- **[vim-rhubarb](https://github.com/tpope/vim-rhubarb)** - GitHub integration
-- **[vim-gitgutter](https://github.com/airblade/vim-gitgutter)** - Git diff indicators
-- **[vim-mergetool](https://github.com/samoshkin/vim-mergetool)** - Merge conflict resolution
-
-</details>
-
-<details>
-<summary><b>⚡ Utilities</b></summary>
-
-- **[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)** - Terminal management
-- **[wilder.nvim](https://github.com/gelguy/wilder.nvim)** - Command completion
-- **[copilot.vim](https://github.com/github/copilot.vim)** - AI code suggestions
-
-</details>
+##
 
 ## 🔧 Troubleshooting
 
