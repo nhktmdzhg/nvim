@@ -13,7 +13,6 @@ return {
 			indicator = {
 				style = "none",
 			},
-			diagnostics = "coc",
 			diagnostics_update_in_insert = false, -- Don't update diagnostics in insert mode
 			show_buffer_icons = true,
 			show_buffer_close_icons = false, -- Disable close icons for cleaner look
