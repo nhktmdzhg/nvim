@@ -1,6 +1,6 @@
 # 🚀 Modern Neovim Configuration
 
-<div align="center">
+<div align='center'>
 
 [![Neovim](https://img.shields.io/badge/Neovim-0.8+-57A143?style=flat-square&logo=neovim&logoColor=white)](https://neovim.io/)
 [![Lua](https://img.shields.io/badge/Lua-2C2D72?style=flat-square&logo=lua&logoColor=white)](https://www.lua.org/)
@@ -196,12 +196,12 @@ git clone https://github.com/nhktmdzhg/nvim.git ~/.config/nvim
 
 ```powershell
 # Backup existing config (if any)
-if (Test-Path "$env:LOCALAPPDATA\nvim") {
-    Rename-Item "$env:LOCALAPPDATA\nvim" "$env:LOCALAPPDATA\nvim.backup"
+if (Test-Path '$env:LOCALAPPDATA\nvim') {
+    Rename-Item '$env:LOCALAPPDATA\nvim' '$env:LOCALAPPDATA\nvim.backup'
 }
 
 # Clone this configuration
-git clone https://github.com/nhktmdzhg/nvim.git "$env:LOCALAPPDATA\nvim"
+git clone https://github.com/nhktmdzhg/nvim.git '$env:LOCALAPPDATA\nvim'
 ```
 
 ### 6. Install Language Servers (Optional)
@@ -209,13 +209,13 @@ git clone https://github.com/nhktmdzhg/nvim.git "$env:LOCALAPPDATA\nvim"
 For enhanced language support, install COC extensions:
 
 ```vim
-" Common language servers
+' Common language servers
 :CocInstall coc-json coc-html coc-css coc-tsserver coc-pyright
 
-" For C/C++ (requires clangd)
+' For C/C++ (requires clangd)
 :CocInstall coc-clangd
 
-" For more languages, see: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+' For more languages, see: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 ```
 
 ## ⌨️ Key Mappings
@@ -361,7 +361,7 @@ Special thanks to all the plugin authors and the Neovim community for making thi
 
 ---
 
-<div align="center">
+<div align='center'>
 
 **⭐ Star this repository if you find it helpful!**
 

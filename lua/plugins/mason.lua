@@ -1,13 +1,13 @@
 return {
-	"williamboman/mason.nvim",
+	'williamboman/mason.nvim',
 	lazy = false,
 	opts = {
 		ui = {
-			border = "rounded",
+			border = 'rounded',
 			icons = {
-				package_installed = "✓",
-				package_pending = "➜",
-				package_uninstalled = "✗",
+				package_installed = '✓',
+				package_pending = '➜',
+				package_uninstalled = '✗',
 			},
 		},
 	},

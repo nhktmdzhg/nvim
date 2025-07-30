@@ -13,9 +13,9 @@ local function natural_cmp(left, right)
 		local l = string.sub(left, i, -1)
 		local r = string.sub(right, i, -1)
 
-		if type(tonumber(string.sub(l, 1, 1))) == "number" and type(tonumber(string.sub(r, 1, 1))) == "number" then
-			local l_number = tonumber(string.match(l, "^[0-9]+"))
-			local r_number = tonumber(string.match(r, "^[0-9]+"))
+		if type(tonumber(string.sub(l, 1, 1))) == 'number' and type(tonumber(string.sub(r, 1, 1))) == 'number' then
+			local l_number = tonumber(string.match(l, '^[0-9]+'))
+			local r_number = tonumber(string.match(r, '^[0-9]+'))
 
 			if l_number ~= r_number then
 				return l_number < r_number
@@ -26,12 +26,12 @@ local function natural_cmp(left, right)
 	end
 end
 return {
-	"nvim-tree/nvim-tree.lua",
+	'nvim-tree/nvim-tree.lua',
 	lazy = true,
 	keys = {},
 	config = {
 		sort = {
-			sorter = "case_sensitive",
+			sorter = 'case_sensitive',
 		},
 		view = {
 			float = {
@@ -46,8 +46,8 @@ return {
 					local center_x = (screen_w - window_w) / 2
 					local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
 					return {
-						border = "rounded",
-						relative = "editor",
+						border = 'rounded',
+						relative = 'editor',
 						row = center_y,
 						col = center_x,
 						width = window_w_int,
@@ -62,7 +62,7 @@ return {
 		renderer = {
 			group_empty = true,
 			highlight_git = true,   -- Enable git highlighting
-			highlight_opened_files = "name", -- Highlight opened files
+			highlight_opened_files = 'name', -- Highlight opened files
 			icons = {
 				show = {
 					file = true,
@@ -71,16 +71,16 @@ return {
 					git = true,
 				},
 				glyphs = {
-					default = "",
-					symlink = "",
+					default = '',
+					symlink = '',
 					git = {
-						unstaged = "✗",
-						staged = "✓",
-						unmerged = "",
-						renamed = "➜",
-						untracked = "★",
-						deleted = "",
-						ignored = "◌",
+						unstaged = '✗',
+						staged = '✓',
+						unmerged = '',
+						renamed = '➜',
+						untracked = '★',
+						deleted = '',
+						ignored = '◌',
 					},
 				},
 			},
@@ -90,10 +90,10 @@ return {
 			debounce_delay = 50, -- Debounce delay for diagnostics update
 			show_on_dirs = false, -- Show diagnostics on parent dirs
 			icons = {
-				hint = "",
-				info = "",
-				warning = "",
-				error = "",
+				hint = '',
+				info = '',
+				warning = '',
+				error = '',
 			},
 		},
 		git = {
@@ -104,19 +104,19 @@ return {
 		},
 		filters = {
 			dotfiles = true,
-			custom = { "^.git$", "node_modules", ".cache" }, -- Add more common filters
-			exclude = { ".gitignore", ".env.example" }, -- But show these dotfiles
+			custom = { '^.git$', 'node_modules', '.cache' }, -- Add more common filters
+			exclude = { '.gitignore', '.env.example' }, -- But show these dotfiles
 		},
 		filesystem_watchers = {
 			enable = true,
 			debounce_delay = 50, -- Debounce file system events
 			ignore_dirs = {
-				"node_modules",
-				".git",
-				".cache",
-				"target",
-				"build",
-				"dist",
+				'node_modules',
+				'.git',
+				'.cache',
+				'target',
+				'build',
+				'dist',
 			},
 		},
 		actions = {
@@ -125,10 +125,10 @@ return {
 				resize_window = true, -- Resize window after opening file
 				window_picker = {
 					enable = true,
-					chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+					chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
 					exclude = {
-						filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-						buftype = { "nofile", "terminal", "help" },
+						filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+						buftype = { 'nofile', 'terminal', 'help' },
 					},
 				},
 			},
@@ -143,20 +143,20 @@ return {
 		end,
 	},
 	init = function()
-		local api = require("nvim-tree.api")
+		local api = require('nvim-tree.api')
 
 		local key = vim.keymap.set
 		local opts = {
 			noremap = true,
 			silent = true,
 		}
-		key("n", "<F5>", function()
+		key('n', '<F5>', function()
 			api.tree.toggle()
 		end, opts)
-		key("n", "<F6>", function()
+		key('n', '<F6>', function()
 			api.tree.reload()
 		end, opts)
-		vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
+		vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
 			nested = false,
 			callback = function(e)
 				local tree_api = api.tree
@@ -169,12 +169,12 @@ return {
 						winCount = winCount + 1
 					end
 				end
-				if e.event == "QuitPre" and winCount == 2 then
+				if e.event == 'QuitPre' and winCount == 2 then
 					vim.api.nvim_cmd({
-						cmd = "qall",
+						cmd = 'qall',
 					}, {})
 				end
-				if e.event == "BufEnter" and winCount == 1 then
+				if e.event == 'BufEnter' and winCount == 1 then
 					vim.defer_fn(function()
 						tree_api.toggle({
 							find_file = true,
