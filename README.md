@@ -38,10 +38,7 @@ _A carefully crafted Neovim configuration focused on performance, productivity, 
 
 ### 🎯 **Language Support**
 
-- **Multi-language**: Syntax highlighting via vim-polyglot
-- **C/C++**: Enhanced highlighting with vim-lsp-cxx-highlight
-- **JavaScript/JSX**: Modern JS and React support
-- **Python**: Optimized folding with SimpylFold
+- **Multi-language**: Syntax highlighting via nvim-treesitter
 - **Web Development**: CSS, HTML, and JavaScript intelligence
 
 ### 🔄 **Git Integration**
@@ -49,7 +46,6 @@ _A carefully crafted Neovim configuration focused on performance, productivity, 
 - **Fugitive**: Comprehensive git operations
 - **GitGutter**: Real-time diff indicators in sign column
 - **Rhubarb**: GitHub integration for fugitive
-- **Merge Tool**: Advanced conflict resolution
 
 ### ⚡ **Performance Optimizations**
 
@@ -290,11 +286,7 @@ The configuration is modular and easy to customize:
 
 ### 🎯 Language & Syntax
 
-- [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot) — Multi-language support
-- [jackguo381/vim-lsp-cxx-highlight](https://github.com/jackguo381/vim-lsp-cxx-highlight) — C/C++ highlight
-- [yuezk/vim-js](https://github.com/yuezk/vim-js) — JavaScript
-- [MaxMEllon/vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) — JSX
-- [tmhedberg/SimpylFold](https://github.com/tmhedberg/SimpylFold) — Python folding
+- ['nvim-treesitter/nvim-treesitter'](https://github.com/nvim-treesitter/nvim-treesitter) — Enhanced syntax highlighting and code folding
 
 ### 🔄 Git Integration
 

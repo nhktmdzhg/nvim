@@ -129,20 +129,15 @@ require('lazy').setup({
 		{ 'ibhagwan/fzf-lua', lazy = false },
 		{ 'windwp/nvim-autopairs', lazy = false },
 		{ 'preservim/nerdcommenter', lazy = false },
-		{ 'jackguo380/vim-lsp-cxx-highlight', lazy = true, ft = { 'cpp', 'c', 'h', 'hpp' } }, -- C/C++
-		{ 'sheerun/vim-polyglot', lazy = true, event = 'BufReadPost' }, -- Multi-language
-		{ 'yuezk/vim-js', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JavaScript
-		{ 'MaxMEllon/vim-jsx-pretty', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JSX
 		{ 'tpope/vim-fugitive', lazy = false }, -- Git information
 		{ 'tpope/vim-rhubarb', lazy = false }, -- GitHub integration
 		{ 'airblade/vim-gitgutter', lazy = true, event = 'BufReadPost' }, -- Git diff indicators
-		{ 'samoshkin/vim-mergetool', lazy = true, cmd = { 'MergetoolToggle', 'MergetoolStart' } }, -- Merge tool
-		{ 'tmhedberg/SimpylFold', lazy = true, ft = 'python' }, -- Python folding
 		{ 'github/copilot.vim', lazy = false }, -- GitHub Copilot
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
 		{ 'goolord/alpha-nvim', lazy = true }, -- Greeter
 		{ 'neovim/nvim-lspconfig' },
 		{ 'williamboman/mason-lspconfig.nvim' },
+		{ 'nvim-treesitter/nvim-treesitter', branch = 'master', lazy = false, build = ':TSUpdate' },
 		{ import = 'plugins' },
 	},
 	checker = { enabled = false },
