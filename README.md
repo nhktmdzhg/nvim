@@ -24,17 +24,16 @@ _A carefully crafted Neovim configuration focused on performance, productivity, 
 
 ### 🧠 **Intelligence & Completion**
 
-- **LSP**: COC.nvim for comprehensive language server support
-- **Autocompletion**: Smart completion with tab navigation
+- **LSP**: nvim-lspconfig and mason-lspconfig for comprehensive language server support
+- **Autocompletion**: Smart completion with nvim-cmp
 - **Autopairs**: Automatic bracket and quote pairing
-- **Emmet**: HTML/CSS expansion support
 - **Commenting**: NERDCommenter for easy code commenting
 - **GitHub Copilot**: AI-powered code suggestions
 
 ### 🔍 **Search & Navigation**
 
 - **Fuzzy Finder**: FZF with Lua integration for fast file searching
-- **Command Palette**: Wilder.nvim for enhanced command completion
+- **Command Palette**: nvim-cmp for enhanced command completion
 - **File Tree**: Natural sorting with git status indicators
 
 ### 🎯 **Language Support**
@@ -209,13 +208,7 @@ git clone https://github.com/nhktmdzhg/nvim.git '$env:LOCALAPPDATA\nvim'
 For enhanced language support, install COC extensions:
 
 ```vim
-' Common language servers
-:CocInstall coc-json coc-html coc-css coc-tsserver coc-pyright
-
-' For C/C++ (requires clangd)
-:CocInstall coc-clangd
-
-' For more languages, see: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+:MasonInstall black clang-format clangd css-lsp eslint-lsp html-lsp jedi-language-server lua-language-server luacheck prettier rust-analyzer sonarlint-language-server stylua
 ```
 
 ## ⌨️ Key Mappings
@@ -292,7 +285,6 @@ The configuration is modular and easy to customize:
 - [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
 - [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) — Code formatter
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) — Auto pairs
-- [mattn/emmet-vim](https://github.com/mattn/emmet-vim) — Emmet for HTML/CSS
 - [preservim/nerdcommenter](https://github.com/preservim/nerdcommenter) — Fast code commenting
 - [github/copilot.vim](https://github.com/github/copilot.vim) — AI code suggestion
 
@@ -374,3 +366,4 @@ Special thanks to all the plugin authors and the Neovim community for making thi
 _Made with ❤️ for the Neovim community_
 
 </div>
+```

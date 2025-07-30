@@ -112,6 +112,12 @@ require('lazy').setup({
 			name = 'catppuccin',
 			lazy = false,
 			priority = 1000,
+			config = {
+				integrations = {
+					mason = true,
+					copilot_vim = true,
+				},
+			},
 		},
 		{
 			'junegunn/fzf',
@@ -123,7 +129,7 @@ require('lazy').setup({
 		{ 'ibhagwan/fzf-lua', lazy = false },
 		{ 'windwp/nvim-autopairs', lazy = false },
 		{ 'preservim/nerdcommenter', lazy = false },
-		{ 'jackguo381/vim-lsp-cxx-highlight', lazy = true, ft = { 'cpp', 'c', 'h', 'hpp' } }, -- C/C++
+		{ 'jackguo380/vim-lsp-cxx-highlight', lazy = true, ft = { 'cpp', 'c', 'h', 'hpp' } }, -- C/C++
 		{ 'sheerun/vim-polyglot', lazy = true, event = 'BufReadPost' }, -- Multi-language
 		{ 'yuezk/vim-js', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JavaScript
 		{ 'MaxMEllon/vim-jsx-pretty', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JSX

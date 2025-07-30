@@ -29,7 +29,7 @@
   },
   "cmp-path": {
     "branch": "main",
-    "commit": "e52e640b7befd8113b3350f46e8cfcfe98fcf730"
+    "commit": "c642487086dbd9a93160e1679a1327be111cbc25"
   },
   "cmp-vsnip": {
     "branch": "main",
@@ -43,17 +43,13 @@
     "branch": "release",
     "commit": "51f80c0ed4f70d1c7e8c0ff11a792a9d84502c03"
   },
-  "emmet-vim": {
-    "branch": "master",
-    "commit": "e98397144982d1e75b20d94d55a82de3ec8f648d"
-  },
   "fzf": {
     "branch": "master",
     "commit": "04c4269db3f8058d2afc301dfba49d497249eb5c"
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "5aac6fb51fe38a1012cb9e124cf6d99db1f11fe5"
+    "commit": "c6efab0fd1d8548a760e837629b84e400ac76c79"
   },
   "lazy.nvim": {
     "branch": "main",
