@@ -12,7 +12,7 @@ return {
 			desc = 'Format buffer',
 		},
 	},
-	config = {
+	opts = {
 		formatters_by_ft = {
 			lua = { 'stylua' },
 			python = { 'black' },

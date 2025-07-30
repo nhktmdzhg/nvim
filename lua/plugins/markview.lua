@@ -6,7 +6,7 @@ return {
     },
     ft = { 'markdown', 'latex', 'html' },
     priority = 49,
-    config = {
+    opts = {
         preview = {
             icon_provider = 'devicons',
         }

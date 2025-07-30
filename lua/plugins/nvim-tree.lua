@@ -29,7 +29,7 @@ return {
 	'nvim-tree/nvim-tree.lua',
 	lazy = true,
 	keys = {},
-	config = {
+	opts = {
 		sort = {
 			sorter = 'case_sensitive',
 		},

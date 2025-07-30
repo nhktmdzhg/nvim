@@ -112,7 +112,7 @@ require('lazy').setup({
 			name = 'catppuccin',
 			lazy = false,
 			priority = 1000,
-			config = {
+			opts = {
 				integrations = {
 					mason = true,
 					copilot_vim = true,
@@ -131,7 +131,6 @@ require('lazy').setup({
 		{ 'preservim/nerdcommenter', lazy = false },
 		{ 'tpope/vim-fugitive', lazy = false }, -- Git information
 		{ 'tpope/vim-rhubarb', lazy = false }, -- GitHub integration
-		{ 'airblade/vim-gitgutter', lazy = true, event = 'BufReadPost' }, -- Git diff indicators
 		{ 'github/copilot.vim', lazy = false }, -- GitHub Copilot
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
 		{ 'goolord/alpha-nvim', lazy = true }, -- Greeter
@@ -146,11 +145,6 @@ require('lazy').setup({
 require('nvim-autopairs').setup({})
 require('mini.icons').setup()
 vim.cmd.colorscheme('catppuccin-mocha')
-
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = '*',
-	command = 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o',
-})
 
 local keymap = vim.keymap.set
 local opts = {
@@ -182,7 +176,7 @@ end, opts)
 keymap('x', '<Del>', function()
 	local clipboard = vim.fn.getreg('+')
 	local clipboard_type = vim.fn.getregtype('+')
-	vim.cmd([[normal! '_d]])
+	vim.cmd([[normal! "_d]])
 	vim.fn.setreg('+', clipboard, clipboard_type)
 end, opts)
 

@@ -9,7 +9,7 @@ return {
 		{ '<esc>', '<C-\\><C-n>', mode = 't' },
 	},
 	cmd = { 'ToggleTerm' },
-	config = {
+	opts = {
 		size = 20,
 		open_mapping = nil, -- Disable default mapping to avoid conflicts
 		hide_numbers = true, -- Hide line numbers in terminal

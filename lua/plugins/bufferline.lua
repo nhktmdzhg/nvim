@@ -2,13 +2,13 @@
 return {
 	'akinsho/bufferline.nvim',
 	version = '*',
-	lazy = true,
+	lazy = false,
 	keys = {
 		{ '<C-Tab>', ':BufferLineCycleNext<CR>' },
 		{ '<C-S-w>', ':bdelete<CR>' },
 	},
 	dependencies = 'nvim-tree/nvim-web-devicons',
-	config = {
+	opts = {
 		options = {
 			indicator = {
 				style = 'none',
