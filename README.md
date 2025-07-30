@@ -62,7 +62,7 @@ Before installing this configuration, ensure you have the following dependencies
 
 - **Neovim** ≥ 0.8.0
 - **Git** for plugin management
-- **Node.js** ≥ 16.0 (for COC.nvim)
+- **Node.js** ≥ 16.0
 - **Python** 3.6+ with pip
 
 ### Optional but Recommended
@@ -201,7 +201,7 @@ git clone https://github.com/nhktmdzhg/nvim.git '$env:LOCALAPPDATA\nvim'
 
 ### 6. Install Language Servers (Optional)
 
-For enhanced language support, install COC extensions:
+For enhanced language support, install Mason extensions:
 
 ```vim
 :MasonInstall black clang-format clangd css-lsp eslint-lsp html-lsp jedi-language-server lua-language-server luacheck prettier rust-analyzer sonarlint-language-server stylua
@@ -299,39 +299,6 @@ The configuration is modular and easy to customize:
 
 - [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) — Floating terminal
 
-##
-
-## 🔧 Troubleshooting
-
-<details>
-<summary><b>Common Issues</b></summary>
-
-**Plugin installation fails:**
-
-- Ensure you have git installed and configured
-- Check internet connection
-- Try `:PlugClean` then `:PlugInstall`
-
-**COC language servers not working:**
-
-- Install Node.js and ensure it's in PATH
-- Run `:CocInfo` to check status
-- Install language-specific tools (e.g., clangd for C++)
-
-**Icons not displaying:**
-
-- Install a Nerd Font
-- Set your terminal to use the Nerd Font
-- Restart terminal and Neovim
-
-**Slow startup:**
-
-- Check `:StartupTime` (if available)
-- Disable unnecessary plugins
-- Update to latest Neovim version
-
-</details>
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to:
@@ -358,4 +325,3 @@ Special thanks to all the plugin authors and the Neovim community for making thi
 _Made with ❤️ for the Neovim community_
 
 </div>
-```
