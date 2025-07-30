@@ -61,7 +61,7 @@ return {
 		},
 		renderer = {
 			group_empty = true,
-			highlight_git = true,   -- Enable git highlighting
+			highlight_git = true, -- Enable git highlighting
 			highlight_opened_files = 'name', -- Highlight opened files
 			icons = {
 				show = {

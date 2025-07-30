@@ -4,9 +4,9 @@ return {
 	version = '*',
 	lazy = true,
 	keys = {
-		{ '<F9>',  ':ToggleTerm direction=float<CR>' },
+		{ '<F9>', ':ToggleTerm direction=float<CR>' },
 		{ '<C-k>', ':bd!<CR>' },
-		{ '<esc>', '<C-\\><C-n>',                    mode = 't' },
+		{ '<esc>', '<C-\\><C-n>', mode = 't' },
 	},
 	cmd = { 'ToggleTerm' },
 	config = {

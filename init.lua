@@ -19,29 +19,29 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.termguicolors = true
 
 -- Performance optimizations
-vim.opt.hidden = true        -- Allow switching buffers without saving
-vim.opt.wrap = false         -- Disable line wrapping for better performance
-vim.opt.conceallevel = 0     -- Show concealed text
-vim.opt.scrolloff = 8        -- Keep 8 lines visible above/below cursor
-vim.opt.sidescrolloff = 8    -- Keep 8 columns visible left/right of cursor
-vim.opt.updatetime = 100     -- Faster completion (default is 4000ms)
-vim.opt.timeoutlen = 500     -- Faster key sequence completion
-vim.opt.redrawtime = 1500    -- Time limit for redrawing
+vim.opt.hidden = true -- Allow switching buffers without saving
+vim.opt.wrap = false -- Disable line wrapping for better performance
+vim.opt.conceallevel = 0 -- Show concealed text
+vim.opt.scrolloff = 8 -- Keep 8 lines visible above/below cursor
+vim.opt.sidescrolloff = 8 -- Keep 8 columns visible left/right of cursor
+vim.opt.updatetime = 100 -- Faster completion (default is 4000ms)
+vim.opt.timeoutlen = 500 -- Faster key sequence completion
+vim.opt.redrawtime = 1500 -- Time limit for redrawing
 vim.opt.maxmempattern = 5000 -- Memory limit for pattern matching
-vim.opt.re = 0               -- Use automatic regexp engine selection
+vim.opt.re = 0 -- Use automatic regexp engine selection
 
 -- Better splitting
 vim.opt.splitbelow = true -- New horizontal splits go below
 vim.opt.splitright = true -- New vertical splits go right
 
 -- Improve search
-vim.opt.hlsearch = true  -- Highlight search results
+vim.opt.hlsearch = true -- Highlight search results
 vim.opt.incsearch = true -- Incremental search
 vim.opt.smartcase = true -- Smart case sensitivity (with ignorecase)
 
 -- Better indentation
 vim.opt.smartindent = true -- Smart autoindenting
-vim.opt.autoindent = true  -- Copy indent from current line
+vim.opt.autoindent = true -- Copy indent from current line
 
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
 	pattern = '*.json',
@@ -92,7 +92,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-			{ out,                            'WarningMsg' },
+			{ out, 'WarningMsg' },
 			{ '\nPress any key to exit...' },
 		}, true, {})
 		vim.fn.getchar()
@@ -120,21 +120,21 @@ require('lazy').setup({
 			end,
 			lazy = false,
 		},
-		{ 'ibhagwan/fzf-lua',                 lazy = false },
-		{ 'windwp/nvim-autopairs',            lazy = false },
-		{ 'preservim/nerdcommenter',          lazy = false },
-		{ 'jackguo381/vim-lsp-cxx-highlight', lazy = true,  ft = { 'cpp', 'c', 'h', 'hpp' } },         -- C/C++
-		{ 'sheerun/vim-polyglot',             lazy = true,  event = 'BufReadPost' },                   -- Multi-language
-		{ 'yuezk/vim-js',                     lazy = true,  ft = { 'javascript', 'javascriptreact' } }, -- JavaScript
-		{ 'MaxMEllon/vim-jsx-pretty',         lazy = true,  ft = { 'javascript', 'javascriptreact' } }, -- JSX
-		{ 'tpope/vim-fugitive',               lazy = false },                                          -- Git information
-		{ 'tpope/vim-rhubarb',                lazy = false },                                          -- GitHub integration
-		{ 'airblade/vim-gitgutter',           lazy = true,  event = 'BufReadPost' },                   -- Git diff indicators
-		{ 'samoshkin/vim-mergetool',          lazy = true,  cmd = { 'MergetoolToggle', 'MergetoolStart' } }, -- Merge tool
-		{ 'tmhedberg/SimpylFold',             lazy = true,  ft = 'python' },                           -- Python folding
-		{ 'github/copilot.vim',               lazy = false },                                          -- GitHub Copilot
-		{ 'echasnovski/mini.icons',           lazy = false, branch = 'stable' },                       -- Mini icons
-		{ 'goolord/alpha-nvim',               lazy = true },                                           -- Greeter
+		{ 'ibhagwan/fzf-lua', lazy = false },
+		{ 'windwp/nvim-autopairs', lazy = false },
+		{ 'preservim/nerdcommenter', lazy = false },
+		{ 'jackguo381/vim-lsp-cxx-highlight', lazy = true, ft = { 'cpp', 'c', 'h', 'hpp' } }, -- C/C++
+		{ 'sheerun/vim-polyglot', lazy = true, event = 'BufReadPost' }, -- Multi-language
+		{ 'yuezk/vim-js', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JavaScript
+		{ 'MaxMEllon/vim-jsx-pretty', lazy = true, ft = { 'javascript', 'javascriptreact' } }, -- JSX
+		{ 'tpope/vim-fugitive', lazy = false }, -- Git information
+		{ 'tpope/vim-rhubarb', lazy = false }, -- GitHub integration
+		{ 'airblade/vim-gitgutter', lazy = true, event = 'BufReadPost' }, -- Git diff indicators
+		{ 'samoshkin/vim-mergetool', lazy = true, cmd = { 'MergetoolToggle', 'MergetoolStart' } }, -- Merge tool
+		{ 'tmhedberg/SimpylFold', lazy = true, ft = 'python' }, -- Python folding
+		{ 'github/copilot.vim', lazy = false }, -- GitHub Copilot
+		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
+		{ 'goolord/alpha-nvim', lazy = true }, -- Greeter
 		{ 'neovim/nvim-lspconfig' },
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ import = 'plugins' },
@@ -191,3 +191,14 @@ for _, file in ipairs(files) do
 	local relative_path = string.sub(file, #config_dir + 1, -5)
 	require('settings.' .. relative_path)
 end
+vim.api.nvim_create_user_command('Format', function(args)
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = {
+			start = { args.line1, 0 },
+			['end'] = { args.line2, end_line:len() },
+		}
+	end
+	require('conform').format({ async = true, lsp_format = 'fallback', range = range })
+end, { range = true })

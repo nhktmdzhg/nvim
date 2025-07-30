@@ -61,11 +61,11 @@ vim.api.nvim_create_autocmd('VimEnter', {
 -- Better completion behavior
 vim.opt.completeopt = 'menu,menuone,noselect,preview'
 vim.opt.pumheight = 15 -- Limit popup menu height
-vim.opt.pumblend = 10  -- Make popup menu slightly transparent
+vim.opt.pumblend = 10 -- Make popup menu slightly transparent
 
 -- Better cursor behavior
 vim.opt.guicursor =
-'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
+	'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 
 -- Improve large file handling
 local large_file_group = vim.api.nvim_create_augroup('LargeFile', { clear = true })
@@ -105,7 +105,7 @@ vim.opt.wildoptions = 'pum,tagfile'
 
 -- Better text formatting
 vim.opt.formatoptions = 'jcroqlnt' -- Better auto-formatting
-vim.opt.textwidth = 0              -- No automatic line wrapping
+vim.opt.textwidth = 0 -- No automatic line wrapping
 
 -- Optimize screen updates
 vim.opt.ttyfast = true -- Faster terminal connection

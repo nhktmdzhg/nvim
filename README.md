@@ -264,6 +264,7 @@ The configuration is modular and easy to customize:
 ## 🧩 Plugin Overview
 
 ### 🎨 UI & Appearance
+
 - [catppuccin/nvim](https://github.com/catppuccin/nvim) — Modern color scheme
 - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) — Tab-style buffer management
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — Customizable statusline
@@ -272,11 +273,13 @@ The configuration is modular and easy to customize:
 - [echasnovski/mini.icons](https://github.com/echasnovski/mini.icons) — Extra icon support
 
 ### 📁 File Management & Navigation
+
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) — File explorer tree
 - [junegunn/fzf](https://github.com/junegunn/fzf) — Fuzzy finder
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) — FZF integration in Lua
 
 ### 🧠 LSP, Completion & Formatting
+
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP configuration
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) — LSP/DAP manager
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) — Mason & LSPConfig integration
@@ -294,6 +297,7 @@ The configuration is modular and easy to customize:
 - [github/copilot.vim](https://github.com/github/copilot.vim) — AI code suggestion
 
 ### 🎯 Language & Syntax
+
 - [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot) — Multi-language support
 - [jackguo381/vim-lsp-cxx-highlight](https://github.com/jackguo381/vim-lsp-cxx-highlight) — C/C++ highlight
 - [yuezk/vim-js](https://github.com/yuezk/vim-js) — JavaScript
@@ -301,12 +305,14 @@ The configuration is modular and easy to customize:
 - [tmhedberg/SimpylFold](https://github.com/tmhedberg/SimpylFold) — Python folding
 
 ### 🔄 Git Integration
+
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) — Git wrapper
 - [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb) — GitHub integration
 - [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter) — Git diff indicators
 - [samoshkin/vim-mergetool](https://github.com/samoshkin/vim-mergetool) — Merge tool
 
 ### ⚡ Utilities & Terminal
+
 - [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) — Floating terminal
 
 ##
