@@ -101,10 +101,6 @@ end, {
 })
 
 -- Key mappings
-vim.keymap.set("n", "<F6>", ":Files<CR>", {
-    silent = true,
-    noremap = true
-})
 vim.keymap.set("n", "<F7>", ":Rg<CR>", {
     silent = true,
     noremap = true

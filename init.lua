@@ -107,19 +107,7 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        { 'catppuccin/nvim',             name = 'catppuccin', lazy = false, priority = 1000 },
-        { 'akinsho/bufferline.nvim',     version = '*',       lazy = true },
-        { 'nvim-tree/nvim-web-devicons', lazy = false },
-        { 'nvim-tree/nvim-tree.lua',     lazy = true },
-        {
-            'gelguy/wilder.nvim',
-            lazy = true,
-            build = function()
-                local rtp = vim.opt.runtimepath:get()
-                vim.opt.runtimepath:prepend(rtp)
-                vim.cmd("UpdateRemotePlugins")
-            end
-        },
+        { 'catppuccin/nvim',                  name = 'catppuccin', lazy = false,                                 priority = 1000 },
         {
             'junegunn/fzf',
             build = function()
@@ -128,24 +116,23 @@ require("lazy").setup({
             lazy = false
         },
         { 'ibhagwan/fzf-lua',                 lazy = false },
-        { 'nvim-lualine/lualine.nvim',        lazy = true },
-        { 'akinsho/toggleterm.nvim',          version = '*',      lazy = true },
-        { 'neoclide/coc.nvim',                branch = 'release', lazy = false },
+        { 'neoclide/coc.nvim',                branch = 'release',  lazy = false },
         { 'windwp/nvim-autopairs',            lazy = false },
         { 'mattn/emmet-vim',                  lazy = false },
         { 'preservim/nerdcommenter',          lazy = false },
-        { 'jackguo380/vim-lsp-cxx-highlight', lazy = true,        ft = { "cpp", "c", "h", "hpp" } },               -- C/C++
-        { 'sheerun/vim-polyglot',             lazy = true,        event = "BufReadPost" },                         -- Multi-language
-        { 'yuezk/vim-js',                     lazy = true,        ft = { "javascript", "javascriptreact" } },      -- JavaScript
-        { 'MaxMEllon/vim-jsx-pretty',         lazy = true,        ft = { "javascript", "javascriptreact" } },      -- JSX
+        { 'jackguo380/vim-lsp-cxx-highlight', lazy = true,         ft = { "cpp", "c", "h", "hpp" } },              -- C/C++
+        { 'sheerun/vim-polyglot',             lazy = true,         event = "BufReadPost" },                        -- Multi-language
+        { 'yuezk/vim-js',                     lazy = true,         ft = { "javascript", "javascriptreact" } },     -- JavaScript
+        { 'MaxMEllon/vim-jsx-pretty',         lazy = true,         ft = { "javascript", "javascriptreact" } },     -- JSX
         { 'tpope/vim-fugitive',               lazy = false },                                                      -- Git information
         { 'tpope/vim-rhubarb',                lazy = false },                                                      -- GitHub integration
-        { 'airblade/vim-gitgutter',           lazy = true,        event = "BufReadPost" },                         -- Git diff indicators
-        { 'samoshkin/vim-mergetool',          lazy = true,        cmd = { "MergetoolToggle", "MergetoolStart" } }, -- Merge tool
-        { 'tmhedberg/SimpylFold',             lazy = true,        ft = "python" },                                 -- Python folding
+        { 'airblade/vim-gitgutter',           lazy = true,         event = "BufReadPost" },                        -- Git diff indicators
+        { 'samoshkin/vim-mergetool',          lazy = true,         cmd = { "MergetoolToggle", "MergetoolStart" } }, -- Merge tool
+        { 'tmhedberg/SimpylFold',             lazy = true,         ft = "python" },                                -- Python folding
         { 'github/copilot.vim',               lazy = false },                                                      -- GitHub Copilot
-        { 'echasnovski/mini.icons',           lazy = false,       branch = 'stable' },                             -- Mini icons
+        { 'echasnovski/mini.icons',           lazy = false,        branch = 'stable' },                            -- Mini icons
         { 'goolord/alpha-nvim',               lazy = true },                                                       -- Greeter
+        { import = "plugins" },
     },
     checker = { enabled = false },
 })
@@ -169,8 +156,6 @@ keymap("n", "/\\", ":noh<CR>", opts)
 keymap("n", "<leader>bd", ":bp <bar> sp <bar> bn <bar> bd<CR>", opts)
 keymap("n", "<C-a>", "gg<S-v>G", opts)
 keymap("i", "<C-a>", "<Esc>gg<S-v>G", opts)
-keymap("n", "<C-Tab>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<C-S-w>", ":bdelete<CR>", opts)
 keymap("n", "<C-S>", ":write<CR>", opts)
 keymap("i", "<C-S>", "<Esc>:write<CR>a", opts)
 keymap("n", "<S-Del>", function()
