@@ -119,17 +119,14 @@ require('lazy').setup({
 				},
 			},
 		},
+		{ 'nvim-telescope/telescope-ui-select.nvim', lazy = true },
 		{
-			'junegunn/fzf',
-			build = function()
-				return vim.fn['fzf#install']()
-			end,
-			lazy = false,
+			'nvim-telescope/telescope-fzf-native.nvim',
+			build = 'make',
 		},
-		{ 'ibhagwan/fzf-lua', lazy = false },
 		{ 'windwp/nvim-autopairs', lazy = false },
 		{ 'echasnovski/mini.comment', version = '*', lazy = false, opts = {} }, -- Mini comment
-		{ 'github/copilot.vim', lazy = true, event = 'InsertEnter' }, -- GitHub Copilot
+		-- { 'github/copilot.vim', lazy = true, event = 'InsertEnter' }, -- GitHub Copilot
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
 		{ 'goolord/alpha-nvim', lazy = true }, -- Greeter
 		{ 'neovim/nvim-lspconfig' },
@@ -196,4 +193,3 @@ vim.api.nvim_create_user_command('Format', function(args)
 	end
 	require('conform').format({ async = true, lsp_format = 'fallback', range = range })
 end, { range = true })
-

@@ -27,12 +27,12 @@ _A carefully crafted Neovim configuration focused on performance, productivity, 
 - **LSP**: nvim-lspconfig and mason-lspconfig for comprehensive language server support
 - **Autocompletion**: Smart completion with nvim-cmp
 - **Autopairs**: Automatic bracket and quote pairing
-- **Commenting**: NERDCommenter for easy code commenting
+- **Commenting**: mini.comment for easy code commenting
 - **GitHub Copilot**: AI-powered code suggestions
 
 ### 🔍 **Search & Navigation**
 
-- **Fuzzy Finder**: FZF with Lua integration for fast file searching
+- **Fuzzy Finder**: Telescope for powerful file and content searching
 - **Command Palette**: nvim-cmp for enhanced command completion
 - **File Tree**: Natural sorting with git status indicators
 
@@ -43,9 +43,7 @@ _A carefully crafted Neovim configuration focused on performance, productivity, 
 
 ### 🔄 **Git Integration**
 
-- **Fugitive**: Comprehensive git operations
-- **GitGutter**: Real-time diff indicators in sign column
-- **Rhubarb**: GitHub integration for fugitive
+- **gitsigns.nvim**: Git signs in the sign column for easy diff viewing
 
 ### ⚡ **Performance Optimizations**
 
@@ -219,27 +217,29 @@ For enhanced language support, install Mason extensions:
 | `Ctrl + Tab`       | Next buffer                             |
 | `/\`               | Clear search highlight                  |
 | `Shift + Del`      | Delete line without affecting clipboard |
+| `Del`              | Delete character under cursor           |
 
 ### File Management
 
-| Key         | Action               |
-| ----------- | -------------------- |
-| `Space + e` | Toggle file explorer |
-| `Ctrl + P`  | Find files           |
-| `Ctrl + F`  | Search in files      |
+| Key        | Action                      |
+| ---------- | --------------------------- |
+| `F5`       | Toggle file explorer        |
+| `F7`       | Telescope                   |
+| `Ctrl + F` | Search and replace in files |
 
 ### Terminal
 
-| Key        | Action                   |
-| ---------- | ------------------------ |
-| `Ctrl + \` | Toggle floating terminal |
+| Key  | Action                   |
+| ---- | ------------------------ |
+| `F9` | Toggle floating terminal |
 
-### Git
+### LSP & completion
 
-| Key  | Action              |
-| ---- | ------------------- |
-| `]c` | Next git change     |
-| `[c` | Previous git change |
+| Key       | Action                      |
+| --------- | --------------------------- |
+| `Alt + L` | Accept copilot suggestion   |
+| `Alt + ]` | Next copilot suggestion     |
+| `Alt + [` | Previous copilot suggestion |
 
 ## 🛠️ Customization
 
@@ -264,8 +264,7 @@ The configuration is modular and easy to customize:
 ### 📁 File Management & Navigation
 
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) — File explorer tree
-- [junegunn/fzf](https://github.com/junegunn/fzf) — Fuzzy finder
-- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) — FZF integration in Lua
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) — Fuzzy finder
 
 ### 🧠 LSP, Completion & Formatting
 
@@ -281,8 +280,8 @@ The configuration is modular and easy to customize:
 - [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
 - [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) — Code formatter
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) — Auto pairs
-- [preservim/nerdcommenter](https://github.com/preservim/nerdcommenter) — Fast code commenting
-- [github/copilot.vim](https://github.com/github/copilot.vim) — AI code suggestion
+- [echasnovski/mini.comment](https://github.com/echasnovski/mini.comment) — Commenting utility
+- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) — GitHub Copilot integration
 
 ### 🎯 Language & Syntax
 
@@ -290,10 +289,7 @@ The configuration is modular and easy to customize:
 
 ### 🔄 Git Integration
 
-- [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) — Git wrapper
-- [tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb) — GitHub integration
-- [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter) — Git diff indicators
-- [samoshkin/vim-mergetool](https://github.com/samoshkin/vim-mergetool) — Merge tool
+- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) — Git signs in the sign column
 
 ### ⚡ Utilities & Terminal
 

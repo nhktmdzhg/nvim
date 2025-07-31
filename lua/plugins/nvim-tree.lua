@@ -28,134 +28,126 @@ end
 return {
 	'nvim-tree/nvim-tree.lua',
 	lazy = true,
-	keys = {},
-	opts = {
-		sort = {
-			sorter = 'case_sensitive',
+	keys = {
+		{
+			'<F5>',
+			function()
+				require('nvim-tree.api').tree.toggle()
+			end,
+			desc = 'Toggle Nvim Tree',
 		},
-		view = {
-			float = {
-				enable = true,
-				open_win_config = function()
-					local screen_w = vim.opt.columns:get()
-					local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-					local window_w = screen_w * WIDTH_RATIO
-					local window_h = screen_h * HEIGHT_RATIO
-					local window_w_int = math.floor(window_w)
-					local window_h_int = math.floor(window_h)
-					local center_x = (screen_w - window_w) / 2
-					local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
-					return {
-						border = 'rounded',
-						relative = 'editor',
-						row = center_y,
-						col = center_x,
-						width = window_w_int,
-						height = window_h_int,
-					}
+		{
+			'<F6>',
+			function()
+				require('nvim-tree.api').tree.reload()
+			end,
+			desc = 'Reload Nvim Tree',
+		},
+	},
+	config = function()
+		require('nvim-tree').setup({
+			sort = {
+				sorter = 'case_sensitive',
+			},
+			view = {
+				float = {
+					enable = true,
+					open_win_config = function()
+						local screen_w = vim.opt.columns:get()
+						local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+						local window_w = screen_w * WIDTH_RATIO
+						local window_h = screen_h * HEIGHT_RATIO
+						local window_w_int = math.floor(window_w)
+						local window_h_int = math.floor(window_h)
+						local center_x = (screen_w - window_w) / 2
+						local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+						return {
+							border = 'rounded',
+							relative = 'editor',
+							row = center_y,
+							col = center_x,
+							width = window_w_int,
+							height = window_h_int,
+						}
+					end,
+				},
+				width = function()
+					return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
 				end,
 			},
-			width = function()
-				return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+			renderer = {
+				group_empty = true,
+				highlight_git = true, -- Enable git highlighting
+				highlight_opened_files = 'name', -- Highlight opened files
+				icons = {
+					show = {
+						file = true,
+						folder = true,
+						folder_arrow = true,
+						git = true,
+					},
+					glyphs = {
+						default = '',
+						symlink = '',
+						git = {
+							unstaged = '✗',
+							staged = '✓',
+							unmerged = '',
+							renamed = '➜',
+							untracked = '★',
+							deleted = '',
+							ignored = '◌',
+						},
+					},
+				},
+			},
+			git = {
+				enable = true,
+				ignore = true,
+				show_on_dirs = true,
+				timeout = 400,
+			},
+			filters = {
+				dotfiles = true,
+				custom = { '^.git$', 'node_modules', '.cache' },
+				exclude = { '.gitignore', '.env.example' },
+			},
+			filesystem_watchers = {
+				enable = true,
+				debounce_delay = 50,
+				ignore_dirs = {
+					'node_modules',
+					'.git',
+					'.cache',
+					'target',
+					'build',
+					'dist',
+				},
+			},
+			actions = {
+				open_file = {
+					quit_on_open = false, -- Don't close tree when opening file
+					resize_window = true, -- Resize window after opening file
+					window_picker = {
+						enable = true,
+						chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+						exclude = {
+							filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+							buftype = { 'nofile', 'terminal', 'help' },
+						},
+					},
+				},
+				change_dir = {
+					enable = true, -- Change root directory
+					global = false, -- Change only current window's directory
+					restrict_above_cwd = false,
+				},
+			},
+			sort_by = function(nodes)
+				table.sort(nodes, natural_cmp)
 			end,
-		},
-		renderer = {
-			group_empty = true,
-			highlight_git = true, -- Enable git highlighting
-			highlight_opened_files = 'name', -- Highlight opened files
-			icons = {
-				show = {
-					file = true,
-					folder = true,
-					folder_arrow = true,
-					git = true,
-				},
-				glyphs = {
-					default = '',
-					symlink = '',
-					git = {
-						unstaged = '✗',
-						staged = '✓',
-						unmerged = '',
-						renamed = '➜',
-						untracked = '★',
-						deleted = '',
-						ignored = '◌',
-					},
-				},
-			},
-		},
-		diagnostics = {
-			enable = true, -- Show LSP diagnostics in tree
-			debounce_delay = 50, -- Debounce delay for diagnostics update
-			show_on_dirs = false, -- Show diagnostics on parent dirs
-			icons = {
-				hint = '',
-				info = '',
-				warning = '',
-				error = '',
-			},
-		},
-		git = {
-			enable = true, -- Enable git integration
-			ignore = true, -- Hide gitignored files
-			show_on_dirs = true, -- Show git status on directories
-			timeout = 400, -- Git timeout in ms
-		},
-		filters = {
-			dotfiles = true,
-			custom = { '^.git$', 'node_modules', '.cache' }, -- Add more common filters
-			exclude = { '.gitignore', '.env.example' }, -- But show these dotfiles
-		},
-		filesystem_watchers = {
-			enable = true,
-			debounce_delay = 50, -- Debounce file system events
-			ignore_dirs = {
-				'node_modules',
-				'.git',
-				'.cache',
-				'target',
-				'build',
-				'dist',
-			},
-		},
-		actions = {
-			open_file = {
-				quit_on_open = false, -- Don't close tree when opening file
-				resize_window = true, -- Resize window after opening file
-				window_picker = {
-					enable = true,
-					chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
-					exclude = {
-						filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
-						buftype = { 'nofile', 'terminal', 'help' },
-					},
-				},
-			},
-			change_dir = {
-				enable = true, -- Change root directory
-				global = false, -- Change only current window's directory
-				restrict_above_cwd = false,
-			},
-		},
-		sort_by = function(nodes)
-			table.sort(nodes, natural_cmp)
-		end,
-	},
-	init = function()
+		})
 		local api = require('nvim-tree.api')
-
-		local key = vim.keymap.set
-		local opts = {
-			noremap = true,
-			silent = true,
-		}
-		key('n', '<F5>', function()
-			api.tree.toggle()
-		end, opts)
-		key('n', '<F6>', function()
-			api.tree.reload()
-		end, opts)
 		vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
 			nested = false,
 			callback = function(e)
