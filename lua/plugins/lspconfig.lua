@@ -1,7 +1,21 @@
 return {
 	'neovim/nvim-lspconfig',
 	lazy = true,
-	event = { 'BufReadPre', 'BufNewFile' },
+	dependencies = 'williamboman/mason-lspconfig.nvim',
+	ft = {
+		'lua',
+		'c',
+		'cpp',
+		'python',
+		'rust',
+		'html',
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'json',
+		'css',
+	},
 	config = function()
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		local lspconfig = require('lspconfig')

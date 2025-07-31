@@ -113,6 +113,8 @@ require('lazy').setup({
 			lazy = false,
 			priority = 1000,
 			opts = {
+				flavour = 'mocha',
+				term_colors = true,
 				integrations = {
 					mason = true,
 					copilot_vim = true,
@@ -127,7 +129,7 @@ require('lazy').setup({
 		{ 'windwp/nvim-autopairs', lazy = false },
 		{ 'echasnovski/mini.comment', version = '*', lazy = false, opts = {} }, -- Mini comment
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
-		{ 'williamboman/mason-lspconfig.nvim' },
+		{ 'williamboman/mason-lspconfig.nvim', lazy = true },
 		{ 'nvim-lua/plenary.nvim' },
 		{ import = 'plugins' },
 	},
@@ -136,7 +138,7 @@ require('lazy').setup({
 
 require('nvim-autopairs').setup({})
 require('mini.icons').setup()
-vim.cmd.colorscheme('catppuccin-mocha')
+vim.cmd.colorscheme('catppuccin')
 
 local keymap = vim.keymap.set
 local opts = {
