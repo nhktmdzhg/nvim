@@ -18,8 +18,8 @@ return {
 			python = { 'black' },
 			rust = { 'rustfmt', lsp_format = 'fallback' },
 			javascript = { 'prettier' },
-			cpp = { 'clang-format' },
-			c = { 'clang-format' },
+			cpp = { 'clang_format' },
+			c = { 'clang_format' },
 			html = { 'prettier' },
 			css = { 'prettier' },
 			json = { 'prettier' },
@@ -35,6 +35,10 @@ return {
 			},
 			prettier = {
 				prepend_args = { '--single-quote', '--trailing-comma', 'none', '--tab-width', '2' },
+			},
+			clang_format = {
+				command = 'clang-format',
+				prepend_args = { '--style={BasedOnStyle: llvm, IndentWidth: 4}' },
 			},
 		},
 	},
