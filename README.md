@@ -246,7 +246,7 @@ For enhanced language support, install Mason extensions:
 The configuration is modular and easy to customize:
 
 - **Core settings**: `init.lua`
-- **Plugin configurations**: `lua/settings/` and `lua/plugins/`
+- **Plugin configurations**: `lua/plugins/`
 - **Theme settings**: Modify Catppuccin setup in `init.lua`
 - **Keymaps**: Add custom mappings in `init.lua`
 
