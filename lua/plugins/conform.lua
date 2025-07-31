@@ -4,7 +4,7 @@ return {
 	lazy = true,
 	keys = {
 		{
-			'<C-f>',
+			'<C-S-f>',
 			function()
 				require('conform').format({ async = true, lsp_format = 'fallback' })
 			end,

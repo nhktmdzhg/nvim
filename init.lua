@@ -128,15 +128,14 @@ require('lazy').setup({
 		},
 		{ 'ibhagwan/fzf-lua', lazy = false },
 		{ 'windwp/nvim-autopairs', lazy = false },
-		{ 'preservim/nerdcommenter', lazy = false },
-		{ 'tpope/vim-fugitive', lazy = false }, -- Git information
-		{ 'tpope/vim-rhubarb', lazy = false }, -- GitHub integration
-		{ 'github/copilot.vim', lazy = false }, -- GitHub Copilot
+		{ 'echasnovski/mini.comment', version = '*', lazy = false, opts = {} }, -- Mini comment
+		{ 'github/copilot.vim', lazy = true, event = 'InsertEnter' }, -- GitHub Copilot
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
 		{ 'goolord/alpha-nvim', lazy = true }, -- Greeter
 		{ 'neovim/nvim-lspconfig' },
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'nvim-treesitter/nvim-treesitter', branch = 'master', lazy = false, build = ':TSUpdate' },
+		{ 'nvim-lua/plenary.nvim' },
 		{ import = 'plugins' },
 	},
 	checker = { enabled = false },
@@ -197,3 +196,4 @@ vim.api.nvim_create_user_command('Format', function(args)
 	end
 	require('conform').format({ async = true, lsp_format = 'fallback', range = range })
 end, { range = true })
+
