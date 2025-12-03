@@ -1,7 +1,7 @@
 return {
 	'williamboman/mason.nvim',
 	lazy = true,
-	event = 'VeryLazy',
+	-- event = 'VeryLazy',
 	opts = {
 		ui = {
 			border = 'rounded',

@@ -7,310 +7,329 @@
 [![License](https://img.shields.io/github/license/nhktmdzhg/nvim?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/nhktmdzhg/nvim?style=flat-square)](https://github.com/nhktmdzhg/nvim/stargazers)
 
-_A carefully crafted Neovim configuration focused on performance, productivity, and aesthetics_
+_ミツキナノカ's carefully crafted Neovim configuration focused on performance, productivity, and aesthetics_
 
 </div>
 
 ## ✨ Features
 
-### 🎨 **User Interface**
+### 🎨 **Beautiful User Interface**
 
-- **Theme**: Catppuccin Mocha with beautiful color scheme
-- **Statusline**: Lualine with custom components and git integration
-- **Bufferline**: Clean tab-like buffer navigation with diagnostics
-- **File Explorer**: Nvim-tree with floating window and natural sorting
-- **Greeter**: Alpha-nvim dashboard for a welcoming start experience
-- **Terminal**: Toggleterm with floating terminal interface
+- **Theme**: Catppuccin Mocha with terminal color integration and Mason UI theming
+- **Dashboard**: Custom Alpha-nvim start screen with ミツキナノカ ASCII art and personalized footer
+- **Statusline**: Lualine with custom mode display, Git integration, and "ミツキナノカ" branding
+- **Bufferline**: Enhanced buffer tabs with LSP diagnostics and smart filtering (hides terminal buffers)
+- **File Explorer**: Floating NvimTree with natural sorting, Git status indicators, and smart window management
+- **Terminal**: ToggleTerm with floating interface, curved borders, and auto-sizing
 
-### 🧠 **Intelligence & Completion**
+### 🧠 **AI-Powered Development**
 
-- **LSP**: nvim-lspconfig and mason-lspconfig for comprehensive language server support
-- **Autocompletion**: Smart completion with nvim-cmp
-- **Autopairs**: Automatic bracket and quote pairing
-- **Commenting**: mini.comment for easy code commenting
-- **GitHub Copilot**: AI-powered code suggestions
+- **GitHub Copilot**: Intelligent code completion with auto-trigger for multiple file types
+- **LSP Integration**: Comprehensive language server support via nvim-lspconfig and Mason
+- **Smart Completion**: nvim-cmp with multiple sources (LSP, buffer, path, cmdline)
+- **Auto Formatting**: Conform.nvim with pre-configured formatters for 10+ languages
+- **Autopairs**: Smart bracket and quote pairing with nvim-autopairs
 
-### 🔍 **Search & Navigation**
+### 🔍 **Powerful Search & Navigation**
 
-- **Fuzzy Finder**: Telescope for powerful file and content searching
-- **Command Palette**: nvim-cmp for enhanced command completion
-- **File Tree**: Natural sorting with git status indicators
+- **Telescope**: Fuzzy finder with FZF native integration and UI-select extension
+- **Search & Replace**: Muren.nvim for powerful multi-file search and replace operations
+- **File Navigation**: Enhanced file exploration with natural sorting and Git integration
+- **Command Enhancement**: Smart command-line completion with path and buffer sources
 
-### 🎯 **Language Support**
+### � **Advanced Language Support**
 
-- **Multi-language**: Syntax highlighting via nvim-treesitter
-- **Web Development**: CSS, HTML, and JavaScript intelligence
+- **Treesitter**: Syntax highlighting for 25+ languages with automatic parser installation
+- **LSP Servers**: Pre-configured for Lua, C/C++, Python, Rust, HTML, CSS, JavaScript/TypeScript
+- **Code Formatting**: Stylua, Black, Prettier, Clang-format, and Rustfmt integration
+- **Markdown**: Enhanced rendering with render-markdown.nvim for better documentation experience
 
 ### 🔄 **Git Integration**
 
-- **gitsigns.nvim**: Git signs in the sign column for easy diff viewing
+- **GitSigns**: Real-time Git status in sign column with current line blame
+- **Buffer Integration**: Git status indicators in file explorer and statusline
+- **Performance**: Optimized Git operations with configurable timeouts
 
 ### ⚡ **Performance Optimizations**
 
-- Lazy loading for faster startup
-- Optimized redraw settings
-- Memory-efficient plugin configuration
-- Background process management
+- **Lazy Loading**: Strategic plugin loading for faster startup times
+- **Large File Handling**: Automatic optimizations for files larger than 1MB
+- **Memory Management**: Optimized regex patterns and syntax highlighting limits
+- **Background Processes**: Efficient file watching and auto-reload functionality
 
 ## 📋 Prerequisites
 
-Before installing this configuration, ensure you have the following dependencies:
+**Required Dependencies:**
 
-### Required
+- **Neovim** ≥ 0.9.0
+- **Git** for plugin management and version control
+- **Node.js** ≥ 16.0 for LSP servers and language tools
+- **Python** 3.6+ with pip for Python-based tools
+- **Make** for building telescope-fzf-native extension
 
-- **Neovim** ≥ 0.8.0
-- **Git** for plugin management
-- **Node.js** ≥ 16.0
-- **Python** 3.6+ with pip
+**Optional but Recommended:**
 
-### Optional but Recommended
-
-- **ripgrep** for faster searching
-- **fd** for file finding
-- **clangd** for C/C++ language server
-- **Maple Mono NF CN** for better icons and ligatures
+- **ripgrep** for faster text searching in Telescope
+- **fd** for enhanced file finding capabilities
+- **A Nerd Font** for proper icon display (recommended: JetBrains Mono Nerd Font)
 
 ## 🚀 Installation
 
-### 1. Install Neovim
-
-<details>
-<summary><b>📦 Linux Installation</b></summary>
-
-#### Debian/Ubuntu
-
-```bash
-sudo apt update
-sudo apt install neovim python3-neovim
-```
-
-#### Arch Linux
-
-```bash
-sudo pacman -S neovim python-pynvim
-```
-
-#### Fedora
-
-```bash
-sudo dnf install neovim python3-neovim
-```
-
-</details>
-
-<details>
-<summary><b>🪟 Windows Installation</b></summary>
-
-Download the latest release from the [official Neovim website](https://neovim.io/), or use a package manager:
-
-#### Using Chocolatey
-
-```powershell
-choco install neovim
-```
-
-#### Using Scoop
-
-```powershell
-scoop install neovim
-```
-
-</details>
-
-### 2. Install Dependencies
-
-#### Node.js and npm
-
-<details>
-<summary>Installation methods</summary>
-
-**Linux (Ubuntu/Debian):**
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-**Linux (Arch):**
-
-```bash
-sudo pacman -S nodejs npm
-```
-
-**Windows:**
-Download from [nodejs.org](https://nodejs.org/) or use package manager.
-
-</details>
-
-#### Python and pip
-
-<details>
-<summary>Installation methods</summary>
-
-**Linux:**
-
-```bash
-# Usually pre-installed, but if needed:
-sudo apt install python3 python3-pip  # Ubuntu/Debian
-sudo pacman -S python python-pip      # Arch
-```
-
-**Windows:**
-Download from [python.org](https://www.python.org/) or use package manager.
-
-</details>
-
-### 3. Install Neovim Providers
-
-```bash
-# Node.js provider
-npm install -g neovim
-
-# Python provider (choose one method)
-pip install pynvim
-# OR on Linux
-sudo apt install python3-pynvim  # Ubuntu/Debian
-sudo pacman -S python-pynvim     # Arch
-```
-
-### 4. Clone Configuration
+### Quick Setup
 
 **Linux/macOS:**
 
 ```bash
-# Backup existing config (if any)
+# Backup existing configuration
 mv ~/.config/nvim ~/.config/nvim.backup 2>/dev/null || true
 
 # Clone this configuration
 git clone https://github.com/nhktmdzhg/nvim.git ~/.config/nvim
+
+# Start Neovim (plugins will auto-install)
+nvim
 ```
 
 **Windows:**
 
 ```powershell
-# Backup existing config (if any)
+# Backup existing config
 if (Test-Path '$env:LOCALAPPDATA\nvim') {
     Rename-Item '$env:LOCALAPPDATA\nvim' '$env:LOCALAPPDATA\nvim.backup'
 }
 
-# Clone this configuration
+# Clone configuration
 git clone https://github.com/nhktmdzhg/nvim.git '$env:LOCALAPPDATA\nvim'
+
+# Start Neovim
+nvim
 ```
 
-### 6. Install Language Servers (Optional)
+### Post-Installation
 
-For enhanced language support, install Mason extensions:
+1. **First Launch**: Lazy.nvim will automatically install all plugins
+2. **LSP Setup**: Language servers will be auto-configured via Mason
+3. **Treesitter**: Parsers will be installed automatically for supported languages
+4. **GitHub Copilot**: Run `:Copilot auth` to authenticate (requires GitHub account)
 
-```vim
-:MasonInstall black clang-format clangd css-lsp eslint-lsp html-lsp jedi-language-server lua-language-server luacheck prettier rust-analyzer sonarlint-language-server stylua
+## ⌨️ Key Bindings
+
+### 🌟 **Global Shortcuts**
+
+| Key      | Mode          | Action       | Description                         |
+| -------- | ------------- | ------------ | ----------------------------------- |
+| `Space`  | Normal        | Leader key   | Primary leader for custom commands  |
+| `\`      | Normal        | Local leader | Secondary leader for local commands |
+| `Ctrl+S` | Normal/Insert | Save file    | Quick save current buffer           |
+| `Ctrl+A` | Normal/Insert | Select all   | Select entire buffer content        |
+| `/\`     | Normal        | Clear search | Remove search highlighting          |
+
+### 📁 **File & Buffer Management**
+
+| Key            | Mode   | Action              | Description                           |
+| -------------- | ------ | ------------------- | ------------------------------------- |
+| `F5`           | Normal | Toggle NvimTree     | Show/hide floating file explorer      |
+| `F6`           | Normal | Reload NvimTree     | Refresh file explorer content         |
+| `F7`           | Normal | Open Telescope      | Launch fuzzy finder menu              |
+| `Ctrl+Tab`     | Normal | Next buffer         | Navigate to next buffer tab           |
+| `Ctrl+Shift+W` | Normal | Close buffer        | Close current buffer tab              |
+| `<leader>bd`   | Normal | Smart buffer delete | Close buffer preserving window layout |
+
+### 🔧 **Development Tools**
+
+| Key            | Mode   | Action            | Description                  |
+| -------------- | ------ | ----------------- | ---------------------------- |
+| `Ctrl+Shift+F` | Any    | Format code       | Auto-format current buffer   |
+| `Ctrl+F`       | Normal | Search & Replace  | Open Muren search/replace UI |
+| `Ctrl+Shift+P` | Any    | Toggle Markdown   | Preview markdown rendering   |
+| `F9`           | Normal | Floating Terminal | Open/close terminal window   |
+| `Ctrl+K`       | Normal | Kill buffer       | Force close current buffer   |
+
+### ✏️ **Editing Enhancements**
+
+| Key         | Mode          | Action                  | Description                                  |
+| ----------- | ------------- | ----------------------- | -------------------------------------------- |
+| `Tab`       | Insert        | Next completion         | Navigate to next completion item             |
+| `Shift+Tab` | Insert        | Previous completion     | Navigate to previous completion item         |
+| `Enter`     | Insert        | Confirm completion      | Accept selected completion                   |
+| `Shift+Del` | Normal/Insert | Delete line (safe)      | Delete line without affecting clipboard      |
+| `Del`       | Visual        | Delete selection (safe) | Delete selection without affecting clipboard |
+
+### 🖥️ **Terminal Controls**
+
+| Key   | Mode     | Action          | Description                    |
+| ----- | -------- | --------------- | ------------------------------ |
+| `Esc` | Terminal | Normal mode     | Exit terminal insert mode      |
+| `F9`  | Terminal | Toggle terminal | Close/reopen floating terminal |
+
+## 🛠️ Plugin Configuration
+
+### 🎨 **UI & Theme Plugins**
+
+| Plugin              | Purpose       | Configuration Highlights                               |
+| ------------------- | ------------- | ------------------------------------------------------ |
+| **catppuccin/nvim** | Color scheme  | Mocha flavor, terminal colors, Mason integration       |
+| **alpha-nvim**      | Start screen  | Custom ミツキナノカ ASCII art, personalized dashboard  |
+| **lualine.nvim**    | Status line   | Custom mode display, Git info, global statusline       |
+| **bufferline.nvim** | Buffer tabs   | LSP diagnostics, terminal filtering, natural sorting   |
+| **nvim-tree.lua**   | File explorer | Floating window, Git integration, natural file sorting |
+
+### 🧠 **Development & LSP**
+
+| Plugin             | Purpose         | Configuration Highlights                                                         |
+| ------------------ | --------------- | -------------------------------------------------------------------------------- |
+| **nvim-lspconfig** | LSP client      | Pre-configured servers: lua_ls, clangd, jedi, rust_analyzer, html, eslint, cssls |
+| **mason.nvim**     | LSP manager     | Rounded borders, custom icons, automatic server management                       |
+| **nvim-cmp**       | Completion      | Multi-source completion (LSP, buffer, path, cmdline)                             |
+| **copilot.lua**    | AI completion   | Auto-trigger, multi-filetype support, enhanced suggestions                       |
+| **conform.nvim**   | Code formatting | Stylua, Black, Prettier, Clang-format with custom arguments                      |
+
+### 🔍 **Search & Navigation**
+
+| Plugin             | Purpose          | Configuration Highlights                                            |
+| ------------------ | ---------------- | ------------------------------------------------------------------- |
+| **telescope.nvim** | Fuzzy finder     | FZF integration, UI-select, optimized layout (95% width/90% height) |
+| **muren.nvim**     | Search & replace | Advanced multi-file search and replace capabilities                 |
+| **gitsigns.nvim**  | Git integration  | Current line blame, diff indicators, background updates             |
+
+### � **Language & Syntax**
+
+| Plugin                   | Purpose             | Configuration Highlights                                      |
+| ------------------------ | ------------------- | ------------------------------------------------------------- |
+| **nvim-treesitter**      | Syntax highlighting | 25+ languages, auto-install, enhanced folding and indentation |
+| **render-markdown.nvim** | Markdown rendering  | Enhanced markdown display with block-width code rendering     |
+
+### ⚡ **Utilities**
+
+| Plugin              | Purpose      | Configuration Highlights                                        |
+| ------------------- | ------------ | --------------------------------------------------------------- |
+| **toggleterm.nvim** | Terminal     | Floating terminal with curved borders, auto-sizing (80% screen) |
+| **nvim-autopairs**  | Auto pairing | Smart bracket and quote completion                              |
+| **mini.comment**    | Commenting   | Intelligent code commenting                                     |
+| **mini.icons**      | File icons   | Consistent iconography across all UI components                 |
+
+## 📁 Configuration Structure
+
+```
+~/.config/nvim/
+├── init.lua                    # � Main configuration with performance optimizations
+├── lazy-lock.json             # 🔒 Plugin version lockfile for reproducible installs
+├── README.md                   # 📖 This comprehensive documentation
+└── lua/plugins/                # 📦 Modular plugin configurations
+    ├── alpha.lua               # 🎨 Custom start screen with ミツキナノカ theme
+    ├── bufferline.lua          # 📑 Enhanced buffer tabs with diagnostics
+    ├── conform.lua             # 🔧 Multi-language code formatting
+    ├── copilot.lua             # 🤖 GitHub Copilot AI integration
+    ├── gitsigns.lua            # 📊 Git status and blame information
+    ├── lspconfig.lua           # 🔌 Language server configurations
+    ├── lualine.lua             # 📏 Customized status line
+    ├── mason.lua               # 🛠️ LSP server management
+    ├── muren.lua               # 🔍 Advanced search and replace
+    ├── nvim-cmp.lua            # ⚡ Intelligent auto-completion
+    ├── nvim-tree.lua           # 🌳 Feature-rich file explorer
+    ├── render_markdown.lua     # 📝 Enhanced markdown rendering
+    ├── telescope.lua           # 🔭 Powerful fuzzy finder
+    ├── toggleterm.lua          # 💻 Floating terminal integration
+    └── treesitter.lua          # 🌈 Advanced syntax highlighting
 ```
 
-## ⌨️ Key Mappings
+## 🔧 Customization Guide
 
-### General
+### 🎨 **Personalizing the Theme**
 
-| Key                | Action                                  |
-| ------------------ | --------------------------------------- |
-| `Ctrl + A`         | Select all                              |
-| `Ctrl + S`         | Save file                               |
-| `Ctrl + Shift + W` | Close buffer                            |
-| `Ctrl + Tab`       | Next buffer                             |
-| `/\`               | Clear search highlight                  |
-| `Shift + Del`      | Delete line without affecting clipboard |
-| `Del`              | Delete character under cursor           |
+```lua
+-- In init.lua, modify Catppuccin setup:
+opts = {
+    flavour = 'mocha',          -- latte, frappe, macchiato, mocha
+    term_colors = true,         -- Enable terminal colors
+    integrations = {
+        mason = true,           -- Mason UI integration
+        copilot_vim = true,     -- Copilot integration
+    },
+},
+```
 
-### File Management
+### ⌨️ **Adding Custom Key Bindings**
 
-| Key        | Action                      |
-| ---------- | --------------------------- |
-| `F5`       | Toggle file explorer        |
-| `F7`       | Telescope                   |
-| `Ctrl + F` | Search and replace in files |
+```lua
+-- Add to init.lua after existing keymaps:
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
-### Terminal
+keymap('n', '<your-key>', '<your-command>', opts)
+```
 
-| Key  | Action                   |
-| ---- | ------------------------ |
-| `F9` | Toggle floating terminal |
+### 🔌 **Adding New Plugins**
 
-### LSP & completion
+Create a new file in `lua/plugins/` or add to existing plugin specs:
 
-| Key       | Action                      |
-| --------- | --------------------------- |
-| `Alt + L` | Accept copilot suggestion   |
-| `Alt + ]` | Next copilot suggestion     |
-| `Alt + [` | Previous copilot suggestion |
+```lua
+return {
+    'author/plugin-name',
+    lazy = true,
+    event = 'VeryLazy',  -- or other lazy loading triggers
+    opts = {
+        -- plugin configuration
+    },
+}
+```
 
-## 🛠️ Customization
+### 🛠️ **Modifying LSP Settings**
 
-The configuration is modular and easy to customize:
+Edit `lua/plugins/lspconfig.lua` to add new language servers:
 
-- **Core settings**: `init.lua`
-- **Plugin configurations**: `lua/plugins/`
-- **Theme settings**: Modify Catppuccin setup in `init.lua`
-- **Keymaps**: Add custom mappings in `init.lua`
-
-## 🧩 Plugin Overview
-
-### 🎨 UI & Appearance
-
-- [catppuccin/nvim](https://github.com/catppuccin/nvim) — Modern color scheme
-- [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) — Tab-style buffer management
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — Customizable statusline
-- [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) — Startup dashboard
-- [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) — File icons
-- [echasnovski/mini.icons](https://github.com/echasnovski/mini.icons) — Extra icon support
-
-### 📁 File Management & Navigation
-
-- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) — File explorer tree
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) — Fuzzy finder
-
-### 🧠 LSP, Completion & Formatting
-
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP configuration
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) — LSP/DAP manager
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) — Mason & LSPConfig integration
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) — Autocompletion engine
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
-- [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-- [hrsh7th/cmp-vsnip](https://github.com/hrsh7th/cmp-vsnip)
-- [hrsh7th/vim-vsnip](https://github.com/hrsh7th/vim-vsnip)
-- [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) — Code formatter
-- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) — Auto pairs
-- [echasnovski/mini.comment](https://github.com/echasnovski/mini.comment) — Commenting utility
-- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) — GitHub Copilot integration
-
-### 🎯 Language & Syntax
-
-- ['nvim-treesitter/nvim-treesitter'](https://github.com/nvim-treesitter/nvim-treesitter) — Enhanced syntax highlighting and code folding
-
-### 🔄 Git Integration
-
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) — Git signs in the sign column
-
-### ⚡ Utilities & Terminal
-
-- [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) — Floating terminal
+```lua
+local servers = {
+    'lua_ls',
+    'clangd',
+    -- Add your new server here
+    'your_language_server',
+}
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to:
+This configuration is open for community contributions! Here's how you can help:
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+### 🐛 **Bug Reports**
 
-## 📄 License
+- Check existing issues before creating new ones
+- Provide detailed reproduction steps
+- Include your system information and Neovim version
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### ✨ **Feature Requests**
+
+- Explain the use case and benefits
+- Consider performance implications
+- Suggest implementation approaches
+
+### 🔧 **Pull Requests**
+
+1. Fork the repository: `git clone https://github.com/nhktmdzhg/nvim.git`
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Test your changes thoroughly
+4. Update documentation if needed
+5. Submit a pull request with detailed description
+
+### 📋 **Contribution Guidelines**
+
+- Maintain the existing code style and structure
+- Ensure all plugins are properly lazy-loaded for performance
+- Test configurations on multiple file types
+- Update the README if adding new features
 
 ## 🙏 Acknowledgments
 
-Special thanks to all the plugin authors and the Neovim community for making this configuration possible.
+### � **Special Thanks**
+
+- **Neovim Team** - For creating an amazing extensible editor
+- **Plugin Authors** - For their incredible work on the ecosystem
+- **Catppuccin Team** - For the beautiful color scheme
+- **Community Contributors** - For feedback and improvements
+
+### 💝 **Inspiration**
+
+This configuration draws inspiration from the broader Neovim community and incorporates best practices from various configurations while maintaining a unique ミツキナノカ aesthetic.
 
 ---
 
@@ -318,6 +337,10 @@ Special thanks to all the plugin authors and the Neovim community for making thi
 
 **⭐ Star this repository if you find it helpful!**
 
-_Made with ❤️ for the Neovim community_
+**🍴 Fork it to make it your own!**
+
+_Made with ❤️ by ミツキナノカ for the Neovim community_
+
+_"Welcome to the world of ミツキナノカ"_ ✨
 
 </div>

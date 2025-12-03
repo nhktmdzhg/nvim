@@ -129,7 +129,7 @@ require('lazy').setup({
 		{ 'windwp/nvim-autopairs', lazy = false },
 		{ 'echasnovski/mini.comment', version = '*', lazy = false, opts = {} }, -- Mini comment
 		{ 'echasnovski/mini.icons', lazy = false, branch = 'stable' }, -- Mini icons
-		{ 'williamboman/mason-lspconfig.nvim', lazy = true },
+		{ 'williamboman/mason-lspconfig.nvim', lazy = true, dependencies = { 'williamboman/mason.nvim' } },
 		{ 'nvim-lua/plenary.nvim' },
 		{ import = 'plugins' },
 	},
